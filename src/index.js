@@ -10,12 +10,14 @@ import './styles/base.less';
 
 
 
-console.log( fetch )
 fetch(
 	'http://106.12.22.19',
-	{}
-).then( res => {
-	console.log(res)
+	{
+		method: 'GET'
+	}
+).then( _ => _.text() ).then( res => {
+	console.log(11111,res,11111111)
 })
+
 // Render the main component into the dom
 ReactDOM.render(<Router><App/></Router>, document.getElementById('app'));
