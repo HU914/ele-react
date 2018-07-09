@@ -8,6 +8,12 @@ class HeadTo extends React.Component {
     super(props);
   }
   render() {
+    let h_r;
+    if (Boolean(this.props.show)) {
+      h_r = <div className='h_r' ><span className='r_l'><NavLink exact  to='/home'>登录</NavLink></span><span className='r_r'><NavLink to='/login'>注册</NavLink></span></div>;
+    } else {
+      h_r = '';
+    }
     return (
       <div className='headTo'>
         <div className='h_l'>
@@ -16,10 +22,7 @@ class HeadTo extends React.Component {
         <div className='h_c'>
           <span>{this.props.name}</span>
         </div>
-        <div className='h_r'>
-          <span className='r_l'><NavLink exact  to='/home'>登录</NavLink></span>
-          <span className='r_r'><NavLink to='/'>注册</NavLink></span>
-        </div>
+        {h_r}
       </div>
     )
   }
