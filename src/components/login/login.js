@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import HeadTo from '../common/headTo';
 import '../../styles/login.less';
 
@@ -8,7 +9,10 @@ class Login extends React.Component {
     this.state = {
       userData:{account:'',password:'',code:''},
       isActive:true,
-      lgShow:false
+      head:{
+        lgShow:false,
+        history:this.props.history
+      }
     };
     this.submit = this.submit.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -35,7 +39,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="lr">
-        <HeadTo name='登录' show={this.state.lgShow} />
+        <HeadTo name='登录' show={this.state.head.lgShow} history={this.state.head.history} />
         <div className="lr_main">
           <form  id='userData' onSubmit={this.submit}>
             <div className='f_warpper'>
@@ -75,7 +79,7 @@ class Login extends React.Component {
             </div>
           </form>
           <div className="resetPass">
-            <span>重置密码?</span>
+            <Link to='/resetPass' className='reset'>重置密码?</Link>
           </div>
         </div>
       </div>
