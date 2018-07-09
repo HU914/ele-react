@@ -16,7 +16,7 @@ class ResetPass extends React.Component {
     return (
       <div>
         <HeadTo name='重置密码' show={this.state.head.lgShow} history={this.state.head.history} />
-        <p>充值</p>
+        <p>LISHI</p>
       </div>
     )
   }
