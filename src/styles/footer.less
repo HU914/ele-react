@@ -1,0 +1,26 @@
+@import '../tools/mixin.less';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  background-color: #fff;
+  box-sizing: border-box;
+  .fz(24);
+  .px2Rem(height,100);
+  .px2Rem2(padding,0,24);
+  .px2Rem(padding-top,20);
+  .bd(border-top,1,rgba(0, 0, 0,0.3));
+  div {
+    display: inline-block;
+    .px2Rem2(padding,0,50);
+    text-align: center;
+    &>.iconfont{
+      .fz(36);
+      .px2Rem(padding-right,10);
+    }
+    &>span {
+      display: block;
+    }
+  }
+}
