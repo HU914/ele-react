@@ -1,6 +1,6 @@
 import React from 'react';
 import HeadTo from '../common/headTo';
-import '../../styles/resetPass.less';
+import './resetPass.less';
 
 class ResetPass extends React.Component {
   constructor(props) {

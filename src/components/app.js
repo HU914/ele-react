@@ -1,6 +1,6 @@
 import React from 'react';
 import RouterView from '../Router/router';
-import '../styles/App.less';
+import './App.less';
 
 class App extends React.Component {
 

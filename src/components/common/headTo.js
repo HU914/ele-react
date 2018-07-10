@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import '../../styles/headTo.less';
+import './headTo.less';
 
 
 class HeadTo extends React.Component {
@@ -16,7 +16,8 @@ class HeadTo extends React.Component {
   render() {
     let h_r;
     if (this.props.show) {
-      h_r = <div className='h_r' ><span className='r_l'><NavLink exact  to='/home'>登录</NavLink></span><span className='r_r'><NavLink to='/login'>注册</NavLink></span></div>;
+      h_r = <div className='h_r' ><span className='r_l'><NavLink exact  to='/home'>登录</NavLink></span>
+            <span className='r_r'><NavLink to='/login'>注册</NavLink></span></div>;
     } else {
       h_r = '';
     }

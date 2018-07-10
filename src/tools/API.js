@@ -1,12 +1,12 @@
 import Server from './server';
 
 class API extends Server {
-  /* 
-    用途：登录数据上传
-    @url http:
-    success:{code:0}
-    @method post
-    @return {promise}
+  /** 
+  *  用途：登录数据上传
+  *  @url http:
+  *  success:{code:0}
+  *  @method post
+  *  @return {promise}
   */
   
 async userlLogin (params={}) {                                        // async/await 异步执行所需数据

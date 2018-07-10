@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import HeadTo from '../common/headTo';
-import '../../styles/login.less';
+import './login.less';
 
 class Login extends React.Component {
   constructor(props) {
@@ -43,26 +43,26 @@ class Login extends React.Component {
         <div className="lr_main">
           <form  id='userData' onSubmit={this.submit}>
             <div className='f_warpper'>
-              <lable>
+              <label>
                 账　号 :
                 <input id='account' type="text" autoFocus="autoFocus" value={this.state.userData.account} name='account' onChange={this.changText} />
-              </lable>
+              </label>
             </div>
             <div className='f_warpper'>
-              <lable>
+              <label>
                 密　码 :
                 <input id='password' type={this.state.isActive ? 'password' : 'text'} value={this.state.userData.password} name='password' onChange={this.changText} />
-              </lable>
+              </label>
               <div className="togg_warpper" >
                 <i className={this.state.isActive ? 'toggle psHidden': 'toggle'} onClick={this.toggle}></i>
                 <span className={this.state.isActive ? 'show_hidden showPs': 'show_hidden'}>abc<span>...</span></span>
               </div>
             </div>
             <div className='f_warpper'>
-              <lable>
+              <label>
                 验证码 :
                 <input id='code' type="text" value={this.state.userData.code} name='code' onChange={this.changText} />
-              </lable>
+              </label>
               <div className="codeImg">
                 <img src="../../images/captcha.png" alt=""/>
                 <div className='codeText'>
