@@ -2,10 +2,8 @@ import React from 'react';
 import RouterView from '../Router/router';
 import '../styles/App.less';
 
-class app extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+class App extends React.Component {
+
   render() {
     return (
       <div className='app'>
@@ -15,4 +13,4 @@ class app extends React.Component {
   }
 }
  
-export  default app;
+export  default App;

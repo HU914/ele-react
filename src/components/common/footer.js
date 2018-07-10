@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom';
 import '../../styles/footer.less';
 
 class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     return (
       <div className="footer">
