@@ -1,0 +1,26 @@
+@baseUrl:'../../assets/';
+.dib(){
+  display:inline-block;
+}
+.px2Rem(@name, @px) {
+  @{name}: @px / 100rem;
+}
+.px2Rem2(@name, @px, @px1) {
+  @{name}:@px / 100rem @px1 / 100rem;
+}
+.px2Rem4(@name,@px @px2, @px3, @px4) {
+  @{name}:@px / 100rem @px2 / 100rem @px3 / 100rem @px4 / 100rem;
+}
+.wh(@px1, @px2) {
+  width: @px1 / 100rem;
+  height: @px2 / 100rem;
+}
+.lh(@px) {
+  line-height: @px / 100rem;
+}
+.fz(@px) {
+  font-size: @px / 100rem;
+}
+.bd(@border,@px,@color,@solid:solid) {
+  @{border}:@px / 100rem @solid @color;
+}
