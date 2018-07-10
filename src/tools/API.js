@@ -5,13 +5,13 @@ class API extends Server {
   *  用途：登录数据上传
   *  @url http:
   *  success:{code:0}
-  *  @method post
+  *  @method get
   *  @return {promise}
   */
   
 async userlLogin (params={}) {                                        // async/await 异步执行所需数据
     try {                                                             //尝试运行代码
-      let result = await this.axios('post','http:127',params);        //发送用户数据到后台并获取到返回值
+      let result = await this.axios('get','',params);        //发送用户数据到后台并获取到返回值
       if (result && result.code === 0){                               // 验证成功，则返回所获取的值
         return result;
       } else {                                                       
@@ -29,3 +29,4 @@ async userlLogin (params={}) {                                        // async/a
   }
 }
 
+export default new API();

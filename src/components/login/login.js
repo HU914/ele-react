@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import HeadTo from '../common/headTo';
+import API from '../../tools/API';
 import './login.less';
 
 class Login extends React.Component {
@@ -30,7 +31,14 @@ class Login extends React.Component {
     userData[name] = value;
     this.setState(userData);
   }
-
+  initData = async () => {
+    try{
+      let result = await API.userlLogin();
+      console.log(result);
+    }catch(err){
+      console.error(err);
+    }
+  }
   toggle () {
     this.setState(preState => ({
       isActive:!preState.isActive
