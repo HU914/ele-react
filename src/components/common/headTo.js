@@ -24,11 +24,13 @@ class HeadTo extends React.Component {
     return (
       <div className='headTo'>
         <div className='h_l' onClick={this.goBack}>
-          <i className='iconfont icon-left-circle'></i>
+          <NavLink to=''>
+            <i className='iconfont icon-left-circle'></i>
+          </NavLink>
         </div>
-        <div className='h_c'>
-          <span>{this.props.name}</span>
-        </div>
+          <div className='h_c'>
+            <NavLink to=''>{this.props.name}</NavLink>
+          </div>
         {h_r}
       </div>
     )

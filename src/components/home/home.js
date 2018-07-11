@@ -1,4 +1,5 @@
 import React from 'react';
+import './home.less';
 import {Route} from 'react-router-dom';
 import HeadTo from '../common/headTo';
 import Footer from '../common/footer';
@@ -19,8 +20,10 @@ class Login extends React.Component {
     return (
       <div className='home'>
       <HeadTo name='tt' show={this.state.head.lgShow} history={this.state.head.history} />
-      <Route exact  path='/home' component={goods} />
-      <Route path='/home/search' component={search} />
+      <div className="h_main">
+        <Route exact  path='/home' component={goods} />
+        <Route path='/home/search' component={search} />
+      </div>
       <Footer/>
       </div>
     )

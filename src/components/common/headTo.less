@@ -1,7 +1,8 @@
-@import '../../tools/mixin.less';
+@import '../../Api/mixin.less';
 .headTo {
   color: #fff;
-  position: relative;
+  position: fixed;
+  width: 100VW;
   background-color: #3190e8;
   .lh(80);
   .px2Rem(height,80);
@@ -16,12 +17,18 @@
     &>.iconfont {
       .fz(40);
     }
+    a {
+      color: #fff;
+    }
   }
   .h_c {
     text-align: center;
     text-overflow: ellipsis;
     .px2Rem(width,480);
     .px2Rem2(padding, 0, 80);
+    a{
+      color: #fff;
+    }
   }
   .h_r {
     position: absolute;
@@ -29,6 +36,9 @@
     .px2Rem(right,10);
     .r_l {
       .px2Rem(padding-right,10);
+    }
+    a{
+      color: #fff;
     }
   }
 }

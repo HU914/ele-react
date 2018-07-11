@@ -1,6 +1,6 @@
 import Server from './server';
 
-class API extends Server {
+class AXIOS extends Server {
   /** 
   *  用途：登录数据上传
   *  @url http:
@@ -29,4 +29,4 @@ async userlLogin (params={}) {                                        // async/a
   }
 }
 
-export default new API();
+export default new AXIOS();

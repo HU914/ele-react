@@ -1,11 +1,11 @@
-@import '../../tools/mixin.less';
+@import '../../Api/mixin.less';
 .lr {
   .fz(28);
   width: 100%;
   height: 100%;
   background-color: #F5F5F5;
   .lr_main {
-    .px2Rem(margin-top,20);
+    .px2Rem(margin-top,40);
     .f_warpper {
       .lh(100);
       .px2Rem(height,100);
@@ -59,17 +59,19 @@
         display: inline-block;
         vertical-align: top;
         img {
-          display: inline-block;
           .wh(120,50);
+          .px2Rem(margin-top,30);
+          display: inline-block;
         }
         .codeText {
           .wh(120,50);
           .px2Rem(margin-left,20);
           display: inline-block;
           .toggle_img {
-            // .lh(80);
+            vertical-align: top;
+            .lh(80);
             .fz(28);
-            // display: inline-block;
+            display: inline-block;
             color: #3b95e9;
             font-weight: 200;
           }
@@ -88,11 +90,16 @@
       .px2Rem2(padding,0,15);
       .submit {
         .wh(600,80);
-        .fz(36);
+        .fz(28);
         .px2Rem(border-radius,8);
         display: inline-block;
         color: #fff;
         background-color: #4cd964;
+      }
+      .disabled {
+        .submit;
+        background-color: #c4c4c4;
+        color: #999;
       }
     }
     .resetPass {

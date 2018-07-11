@@ -1,9 +1,10 @@
-@import '../../tools/mixin.less';
+@import '../../Api/mixin.less';
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left:0;
+  width: 100VW;
   background-color: #fff;
   box-sizing: border-box;
   .fz(24);
@@ -13,7 +14,7 @@
   .bd(border-top,1,rgba(0, 0, 0,0.3));
   div {
     display: inline-block;
-    .px2Rem2(padding,0,50);
+    .px2Rem2(padding,0,48);
     text-align: center;
     .iconfont{
       .fz(36);

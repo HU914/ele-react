@@ -1,15 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import HeadTo from '../common/headTo';
-import API from '../../tools/API';
+import Axios from '../../tools/Axios';
 import './login.less';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userData:{account:'',password:'',code:''},
       isActive:true,
+      isLogin:true,
+      userData:{account:'',password:'',code:''},
       head:{
         lgShow:false,
         history:this.props.history
@@ -21,6 +22,7 @@ class Login extends React.Component {
   }
   submit (event) {
     event.preventDefault();
+    console.log(1);
   }
 
   changText (event) {
@@ -33,7 +35,7 @@ class Login extends React.Component {
   }
   initData = async () => {
     try{
-      let result = await API.userlLogin();
+      let result = await Axios.userlLogin();
       console.log(result);
     }catch(err){
       console.error(err);
@@ -51,13 +53,13 @@ class Login extends React.Component {
         <div className="lr_main">
           <form  id='userData' onSubmit={this.submit}>
             <div className='f_warpper'>
-              <label>
+              <label htmlFor='account'>
                 账　号 :
                 <input id='account' type="text" autoFocus="autoFocus" value={this.state.userData.account} name='account' onChange={this.changText} />
               </label>
             </div>
             <div className='f_warpper'>
-              <label>
+              <label htmlFor='password'>
                 密　码 :
                 <input id='password' type={this.state.isActive ? 'password' : 'text'} value={this.state.userData.password} name='password' onChange={this.changText} />
               </label>
@@ -67,12 +69,12 @@ class Login extends React.Component {
               </div>
             </div>
             <div className='f_warpper'>
-              <label>
+              <label htmlFor='code'>
                 验证码 :
                 <input id='code' type="text" value={this.state.userData.code} name='code' onChange={this.changText} />
               </label>
               <div className="codeImg">
-                <img src="../../images/captcha.png" alt=""/>
+                <img src={require('../../images/captcha.png')} alt=""/>
                 <div className='codeText'>
                   <p className='toggle_img'>换一张</p>
                 </div>
@@ -83,7 +85,7 @@ class Login extends React.Component {
               <p>注册过得用户可凭账号密码登录</p>
             </div>
             <div className="sub">
-              <button type='submit' value='Submit' className='submit'>登录</button>
+              <button type='submit' value='Submit' className={this.state.isLogin? 'disabled':'submit'} disabled={this.state.isLogin}>登录</button>
             </div>
           </form>
           <div className="resetPass">
