@@ -5,6 +5,7 @@ import HeadTo from '../common/headTo';
 import Footer from '../common/footer';
 import search from '../search/search';
 import goods from '../goods/goods';
+import user from '../user/user';
 
 class Login extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Login extends React.Component {
       <div className="h_main">
         <Route exact  path='/home' component={goods} />
         <Route path='/home/search' component={search} />
+        <Route path="/home/user" component={user} />
       </div>
       <Footer/>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import HeadTo from '../common/headTo';
-import Axios from '../../tools/Axios';
+import Axios from '../../Api/Axios';
 import './login.less';
 
 class Login extends React.Component {
