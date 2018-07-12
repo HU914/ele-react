@@ -19,9 +19,9 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div className='home'>
-      <HeadTo name='tt' show={this.state.head.lgShow} history={this.state.head.history} />
-      <div className="h_main">
+      <div className='home' onClick={this.tt}>
+      <HeadTo name='tt' show={this.state.head.lgShow} history={this.state.head.history}/>
+      <div className="h_main" >
         <Route exact  path='/home' component={goods} />
         <Route path='/home/search' component={search} />
         <Route path="/home/user" component={user} />

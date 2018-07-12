@@ -64,6 +64,7 @@ choosePort(HOST, DEFAULT_PORT)
   .then(port => {
     if (port == null) {
       // We have not found a port.
+      port = 'http://106.12.22.19';
       return;
     }
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';

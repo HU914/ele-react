@@ -1,15 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux'
+import {addToCart,addTT} from '../../store/cart/actions';
 import HeadTo from '../common/headTo';
 import Axios from '../../Api/Axios';
 import './login.less';
-
+ 
+/* @connect(                                //使用插件解析connect
+  state =>({obj:state.buyCart}),
+  {addToCart}
+) */
 class Login extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       isActive:true,
-      isLogin:true,
+      isLogin:false,
       userData:{account:'',password:'',code:''},
       head:{
         lgShow:false,
@@ -22,7 +29,8 @@ class Login extends React.Component {
   }
   submit (event) {
     event.preventDefault();
-    console.log(1);
+   this.props.addToCart('ff','ddd',54545);
+   this.props.addTT(2324);
   }
 
   changText (event) {
@@ -47,6 +55,7 @@ class Login extends React.Component {
     }));
   }
   render() {
+
     return (
       <div className="lr">
         <HeadTo name='登录' show={this.state.head.lgShow} history={this.state.head.history} />
@@ -91,10 +100,18 @@ class Login extends React.Component {
           <div className="resetPass">
             <Link to='/resetPass' className='reset'>重置密码?</Link>
           </div>
+          {console.log(this.props.cart)}
         </div>
       </div>
     )
   }
 }
  
-export default Login;
+
+// connect 的原生用法，这里赋值的是 reducers的方法
+export default connect(state => ({
+  cart:state.buyCart
+}), {
+  addToCart,
+  addTT
+})(Login);
