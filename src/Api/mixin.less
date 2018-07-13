@@ -24,3 +24,12 @@
 .bd(@border,@px,@color,@solid:solid) {
   @{border}:@px / 100rem @solid @color;
 }
+.border-none(@after:border) {
+  @{after}: none;
+}
+.bgImg(@url) {
+  background-image: url("@{url}@2x.png");
+  @media screen and (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio){
+    background-image: url("@{url}@3x.png");
+  }
+}

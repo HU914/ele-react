@@ -58,7 +58,7 @@ class Login extends React.Component {
 
     return (
       <div className="lr">
-        <HeadTo name='登录' show={this.state.head.lgShow} history={this.state.head.history} />
+        <HeadTo name='登录' prop={this.state.head}/>
         <div className="lr_main">
           <form  id='userData' onSubmit={this.submit}>
             <div className='f_warpper'>

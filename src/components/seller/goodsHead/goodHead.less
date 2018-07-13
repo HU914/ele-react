@@ -1,0 +1,257 @@
+@import '../../../Api/mixin.less';
+.header {
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background-color:rgba(7,17,25,0.5);
+  .content {
+    position: relative;
+    .px2Rem4(padding, 48, 24, 36, 48);
+    font-size: 0;
+    .avatar {
+      display: inline-block;
+      vertical-align: top;
+      img {
+      .px2Rem(border-radius,4);
+        .wh(128, 128);
+      }
+    }
+    .c-content {
+      display: inline-block;
+      .px2Rem(margin-left, 32);
+      .title {
+        .px2Rem4(margin, 4, 0, 16, 0);
+        .brand {
+          display: inline-block;
+          .wh(60, 36);
+          .bgImg('../images/brand');
+          .px2Rem2(background-size, 60, 36);
+        }
+        .name {
+          font-weight: bold;
+          color: rgb(255,255,255);
+          .px2Rem(margin-left,12);
+          .px2Rem(font-size, 32);
+          .px2Rem(line-height, 36);
+          vertical-align: top;
+        }
+      }
+      .description {
+        color: rgb(255,255,255);
+        .px2Rem(font-size, 24);
+        .px2Rem(line-height,24);
+        .px2Rem(margin-bottom, 20);
+      }
+      .supports{
+        .icon {
+          .wh(24,24);
+          .px2Rem(margin-right,8);
+          .px2Rem2(background-size,24,24);
+          display:inline-block;
+          background-repeat: no-repeat;
+          &.decrease {
+            .bgImg('../images/decrease_2');
+          }
+          &.discount {
+            .bgImg('../images/discount_2');
+          }
+          &.guarantee {
+            .bgImg('../images/guarantee_2');
+          }
+          &.invoice {
+            .bgImg('../images/invoice_2');
+          }
+          &.special {
+            .bgImg('../images/special_2');
+          }
+        }
+        .text{
+          .description;
+          vertical-align: top;
+          .px2Rem(font-size, 20);
+          .px2Rem(line-height, 24);
+          margin: 0;
+        }
+      }
+    }
+    .count {
+      position: absolute;
+      color: #fff;
+      .px2Rem(right, 24);
+      .px2Rem(bottom, 36);
+      .px2Rem2(padding, 0, 16);
+      .px2Rem(line-height, 24);
+      .px2Rem(border-radius, 16);
+      background: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      .sum {
+        display: inline-block;
+        .px2Rem(margin-top, 10);
+        .px2Rem(font-size,20);
+      }
+      .icon {
+        .px2Rem(font-size,20);
+        .px2Rem(margin-left, 8);
+      }
+    }
+  }
+  .banner {
+    .px2Rem(height, 56);
+    .px2Rem(line-height, 56);
+    .px2Rem4(padding,0, 32,0,24);
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    background-color: rgba(7,17,25,0.2);
+    .bannerImg {
+      display: inline-block;
+      .wh(44,24);
+      .px2Rem(margin-bottom, 22);
+      .bgImg('../images/bulletin');
+      .px2Rem2(background-size, 44, 24);
+      background-repeat: no-repeat;
+    }
+    .bannerText {
+      .px2Rem(font-size, 20);
+      .px2Rem(line-height, 56);
+      .px2Rem2(margin,0,8);
+      color: rgb(255, 255, 255);
+      vertical-align: top;
+    }
+    .bannerIcon {
+      position: absolute;
+      .px2Rem(right, 24);
+      .px2Rem(font-size, 14);
+    }
+  }
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    .px2Rem(width, 10000%);
+    .px2Rem(height, 10000%);
+    z-index: -999;
+    filter:blur(10px);
+    img {
+      .px2Rem(width, 10000%);
+      .px2Rem(height, 10000%);
+    }
+  }
+  .detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 9999;
+    width:100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(7, 17, 27, 0.8);
+    .c_warp {
+      min-height:100%;
+      height: auto;
+      .c_c {
+        .px2Rem(margin-top, 128);
+        .px2Rem(padding-bottom, 128);
+        .name {
+          .px2Rem(line-height, 32);
+          .px2Rem(font-size, 32);
+          font-weight: 700;
+          color:rgb(255,255,255);
+          text-align: center;
+        }
+        .star-warp {
+          .px2Rem(margin-top,32);
+          .px2Rem(margin-bottom,56);
+          text-align: center;
+        }
+        .info {
+          width: 80%;
+          margin: 0 auto;
+          text-align: center;
+          p {
+            .px2Rem(font-size, 32);
+            font-weight: 700;
+            color:rgb(255,255,255);
+            .px2Rem(margin-bottom,48);
+            // .border(4,rgba(255, 255, 255, 0.2));
+            // .border(4,rgba(255, 255, 255, 0.2),before);
+            &:after {
+              width: 40%;
+              .px2Rem(left, -40);
+              .px2Rem(bottom, 12);
+            }
+            &:before {
+              width: 40%;
+              left: 68%;
+              .px2Rem(bottom, 12);
+            }
+          }
+        }
+        .supports {
+          width: 80%;
+          margin: auto;
+          .supports-item {
+            .px2Rem2(padding, 0, 24);
+            .px2Rem(margin-bottom, 24);
+            &:last-child {
+              .px2Rem(margin-bottom, 56);
+            }
+            .icon {
+              display: inline-block;
+              .wh(32,32);
+              .px2Rem(margin-right,12);
+              .px2Rem(background-size,32);
+              background-repeat: no-repeat;
+              &.decrease {
+                .bgImg('../images/decrease_2');
+              }
+              &.discount {
+                .bgImg('../images/discount_2');
+              }
+              &.guarantee {
+                .bgImg('../images/guarantee_2');
+              }
+              &.invoice {
+                .bgImg('../images/invoice_2');
+              }
+              &.special {
+                .bgImg('../images/special_2');
+              }
+            }
+            .text {
+              vertical-align: top;
+              .px2Rem(font-size, 24);
+              color: rgb(255,255,255);
+              .px2Rem(line-height, 24);
+            }
+          }
+        }
+        .s_in {
+          width: 80%;
+          margin: auto;
+          color: rgb(255,255,255);
+          .px2Rem(margin-top, 48);
+          .px2Rem(margin-bottom, 48);
+          .px2Rem2(padding, 0, 24);
+          .px2Rem(font-size, 24);
+          .px2Rem(line-height, 48);
+          .px2Rem(letter-spacing, 4);
+        }
+      }
+    }
+    .detailColse {
+      .px2Rem(height, 128);
+      .px2Rem(margin-top, -128);
+      left: 50%;
+      position:  absolute;
+      clear: both;
+      text-align: center;
+      .icon {
+        .px2Rem(font-size, 64);
+        color:rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}

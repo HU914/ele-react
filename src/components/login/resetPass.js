@@ -27,7 +27,7 @@ class ResetPass extends React.Component {
   render() {
     return (
       <div className='rp'>
-        <HeadTo name='重置密码' show={this.state.head.lgShow} history={this.state.head.history} />
+        <HeadTo name='重置密码' prop={this.state.head} />
         <div className="rp_main">
           <form onSubmit={this.submit}>
             <div className="f_warpper"> 

@@ -69,7 +69,7 @@ class User extends React.Component {
             <img src={require('../../images/user.png')} alt=""/>
           </div>
           <div className="vipServer">
-          <h5 className='title'>雨生小服务</h5>
+            <h5 className='title'>雨生小服务</h5>
             <div className="userServer">
               <div className="userNumber">
                 <div className="u_number">
@@ -87,6 +87,30 @@ class User extends React.Component {
                 <div className="u_number">
                   <i className='iconfont icon-yijianfankui'></i>
                   <p><span>发票助手</span></p>
+                </div>
+              </div>
+              <div className="userNumber">
+                <div className="u_number">
+                  <i className='iconfont icon-lianjie'></i>
+                  <p><span>我要合作</span></p>
+                </div>
+              </div>
+              <div className="userNumber">
+                <div className="u_number">
+                  <i className='iconfont icon-lianjie'></i>
+                  <p><span>我要合作</span></p>
+                </div>
+              </div>
+              <div className="userNumber">
+                <div className="u_number">
+                  <i className='iconfont icon-lianjie'></i>
+                  <p><span>我要合作</span></p>
+                </div>
+              </div>
+              <div className="userNumber">
+                <div className="u_number">
+                  <i className='iconfont icon-lianjie'></i>
+                  <p><span>我要合作</span></p>
                 </div>
               </div>
               <div className="userNumber">

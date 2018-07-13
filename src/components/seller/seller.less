@@ -1,0 +1,76 @@
+@import '../../Api/mixin.less';
+.sellerMain {
+  color: #666;
+  // .px2Rem2(padding,0,40);
+  .swiper-container {
+    width: 100vw;
+    .px2Rem(height,380);
+    background-color: #fff;
+    .bd(border-bottom,1,#ddd);
+    .swiper-slide {
+      .s_content {
+        display: flex;
+        flex-wrap: wrap;
+        .goodsItem {
+          flex: 1;
+          text-align: center;
+          .px2Rem(width,140);
+          .px2Rem(min-width,140);
+          a {
+            .goodsImg {
+              .wh(80,80);
+            }
+            .imgText {
+              .fz(24);
+            }
+          }
+        }
+      }
+    }
+  }
+  .sellers {
+    .bd(border-top,1,#ddd);
+    .px2Rem(padding-top,15);
+    .px2Rem(margin-top,20);
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    .title {
+      .fz(24);
+      .px2Rem(padding-left,20);
+      .icon-shouye {
+        color: #5db3ff;
+      }
+    }
+    .s_seller {
+      display: flex;
+      flex-direction: row;
+      .fz(24);
+      .px2Rem2(padding,30,20);
+      .bd(border-bottom,1,#ddd);
+      .sellerImg {
+        .wh(120,120);
+        a {
+          .s_img {
+            .wh(120,120);
+          }
+        }
+      }
+      .s_desc {
+        flex: 1;
+        text-align: left;
+        .px2Rem(padding-left,20);
+        p {
+          .lh(42);
+        }
+      }
+      .s_server {
+        flex: 1;
+        text-align: right;
+        p {
+          .lh(42);
+        }
+      }
+    }
+  }
+}

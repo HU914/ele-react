@@ -10,19 +10,19 @@ class HeadTo extends React.Component {
   }
 
   goBack() {
-    this.props.history.goBack();
+    this.props.prop.history.goBack();
   }
   
   render() {
     let h_r;
-    if (this.props.show) {
+    if (this.props.prop.lgShow) {
       h_r = <div className='h_r' ><span className='r_l'><NavLink exact  to='/home'>登录</NavLink></span>
             <span className='r_r'><NavLink to='/login'>注册</NavLink></span></div>;
     } else {
       h_r = '';
     }
     return (
-      <div className='headTo'>
+      <div className={this.props.prop.position ? 'headTo headToggle' : 'headTo'}>
         <div className='h_l' onClick={this.goBack}>
           {/* <NavLink to=''> */}
             <i className='iconfont icon-left-circle'></i>

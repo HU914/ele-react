@@ -1,7 +1,6 @@
 @import '../../Api/mixin.less';
 .user { 
   display: flex;
-  // font-weight: 600;
   flex-direction: column;
   background-color: #fff;
   .px2Rem2(padding,0,40);
@@ -18,6 +17,7 @@
       .wh(110,110);
       position: absolute;
       left: 50%;
+      // z-index: -1;
       .px2Rem(top,-20);
       .px2Rem(margin-left,-50);
       border-radius:50%;
@@ -74,6 +74,9 @@
       i {
         color: #ff9a4d;
       }
+      .userNumber{
+        .px2Rem(width,80);
+      }
     }
   }
   .userBanlane {
@@ -93,6 +96,13 @@
       &.icon-kefu,&.icon-lianjie,&.icon-yijianfankui{
         color: #5db3ff;
       }
+    }
+    .userServer {
+      flex-wrap: wrap;
+    }
+    .userNumber{
+      .px2Rem(width,140);
+      .px2Rem(min-width,120);
     }
   }
 }
