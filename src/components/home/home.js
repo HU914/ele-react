@@ -1,8 +1,8 @@
 import React from 'react';
 import './home.less';
 import {Route} from 'react-router-dom';
-import HeadTo from '../common/headTo';
-import Footer from '../common/footer';
+import HeadTo from '../common/headTo/headTo';
+import Footer from '../common/footer/footer';
 import search from '../search/search';
 import seller from '../seller/seller';
 import user from '../user/user';

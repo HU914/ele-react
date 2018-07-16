@@ -22,14 +22,11 @@ export default class Server {                     // 默认输出 Server类
         headers:null,                             // 指定请求头{string}
         withCredentials:true,                     // 是否携带本地cookie
         validateStatus:(status)=>{         //如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte
-        console.log(22);
         return status >= 200 && status < 300;
         },
         ...params,                                //外界传参
       }
       axios.request(AxiosConfig).then(res => {    // 发送请求
-        console.log(34434);
-        console.log(res.data,1);
         resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data)) // 请求成功，promise resolve，服务端返回响应数据
       },error =>{                                                               
         if (error.response) {

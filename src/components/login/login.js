@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addToCart,addTT} from '../../store/cart/actions';
-import HeadTo from '../common/headTo';
+import HeadTo from '../common/headTo/headTo';
 import Axios from '../../Api/Axios';
 import './login.less';
  
@@ -17,7 +17,7 @@ class Login extends React.Component {
     this.state = {
       isActive:true,
       isLogin:false,
-      userData:{account:'',password:'',s_code:''},
+      userData:{username:'',password:'',s_code:''},
       head:{
         lgShow:false,
         history:this.props.history
@@ -36,10 +36,15 @@ class Login extends React.Component {
   initImg = async () => {
     try{
       let result = await Axios.verifyImg();
-      console.log(result,1);
+      this.setState(preState => ({
+        imgUrl:result.data.code
+      }));
     }catch(err){
       console.error(err);
     }
+  }
+  cutterImg () {
+    this.initImg();
   }
   submit (event) {
     event.preventDefault();
@@ -79,9 +84,9 @@ class Login extends React.Component {
         <div className="lr_main">
           <form  id='userData' onSubmit={this.submit}>
             <div className='f_warpper'>
-              <label htmlFor='account'>
+              <label htmlFor='username'>
                 账　号 :
-                <input id='account' type="text" autoFocus="autoFocus" value={this.state.userData.account} name='account' onChange={this.changText} />
+                <input id='username' type="text" autoFocus="autoFocus" value={this.state.userData.username} name='username' onChange={this.changText} />
               </label>
             </div>
             <div className='f_warpper'>
@@ -100,9 +105,9 @@ class Login extends React.Component {
                 <input id='s_code' type="text" value={this.state.userData.s_code} name='s_code' onChange={this.changText} />
               </label>
               <div className="codeImg">
-                {/* <img src={"http://106.12.22.19/user/imagecode/"} alt=""/> */}
+                <img src={this.state.imgUrl} alt=""/>
                 <div className='codeText'>
-                  <p className='toggle_img'>换一张</p>
+                  <p className='toggle_img' onClick={this.cutterImg.bind(this)}>换一张</p>
                 </div>
               </div>
             </div>

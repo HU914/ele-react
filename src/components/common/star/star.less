@@ -1,0 +1,65 @@
+@import '../../../Api/mixin.less';
+.star {
+  font-size: 0;
+  .star-item {
+    display: inline-block;
+    background-repeat: no-repeat;
+  }
+  &.star-48 {
+    .star-item {
+      .wh(40, 40);
+      .px2Rem(margin-right, 44);
+      .px2Rem(background-size, 40);
+      &.on {
+        .bgImg('../images/star48_on');
+      }
+      &.half {
+        .bgImg('../images/star48_half');
+      }
+      &.off {
+        .bgImg('../images/star48_off');
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.star-36 {
+    .star-item {
+      .wh(30, 30);
+      .px2Rem(margin-right, 12);
+      .px2Rem(background-size, 30);
+      &.on {
+        .bgImg('../images/star36_on');
+      }
+      &.half {
+        .bgImg('../images/star36_half');
+      }
+      &.off {
+        .bgImg('../images/star36_off');
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.star-24 {
+    .star-item {
+      .wh(20, 20);
+      .px2Rem(margin-right, 6);
+      .px2Rem(background-size, 20);
+      &.on {
+        .bgImg('../images/star24_on');
+      }
+      &.half {
+        .bgImg('../images/star24_half');
+      }
+      &.off {
+        .bgImg('../images/star24_off');
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

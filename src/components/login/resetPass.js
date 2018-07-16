@@ -1,5 +1,5 @@
 import React from 'react';
-import HeadTo from '../common/headTo';
+import HeadTo from '../common/headTo/headTo';
 import './resetPass.less';
 
 class ResetPass extends React.Component {

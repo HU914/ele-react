@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
 import './seller.less';
+import Start from '../common/star/star'
 
 class Goods extends React.Component {
   constructor(props) {
@@ -54,8 +55,8 @@ class Goods extends React.Component {
             </div>
             <div className="s_desc">
               <p className='title'>十三香</p>
+              <Start size='24' score='3.6'></Start>
               <p className='rating'>
-              <span></span>
               <span>4.7</span>
               <span>月售106单</span>
               </p>
