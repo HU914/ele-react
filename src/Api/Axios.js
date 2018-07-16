@@ -11,7 +11,7 @@ class AXIOS extends Server {
   
 async userlLogin (params={}) {                                        // async/await 异步执行所需数据
     try {                                                             //尝试运行代码
-      let result = await this.axios('get','',params);        //发送用户数据到后台并获取到返回值
+      let result = await this.axios('post','/user/signup/',params);        //发送用户数据到后台并获取到返回值
       if (result && result.code === 0){                               // 验证成功，则返回所获取的值
         return result;
       } else {                                                       

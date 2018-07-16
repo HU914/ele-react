@@ -3,7 +3,7 @@ import axios from 'axios';                    // 引入获取数据API
 let baseURL;                                // 定义数据交互请求前缀
 // let imgUrl = '//elm.cangdu.org/img/';       // 定义图片请求前缀
 if(process.env.NODE_ENV === 'development'){   // 判断系统环境是否
-  baseURL = '//api.cangdu.org';               // 开发环境的baseURL
+  baseURL = 'http://106.12.22.19';               // 开发环境的baseURL
 }else{
   baseURL = '//api.cangdu.org';               // 生产环境的baseURL
 }

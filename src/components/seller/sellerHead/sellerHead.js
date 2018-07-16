@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
-import './goodHead.less';
+import './sellerHead.less';
 
-class GoodsHead extends Component {
+class SellerHead extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
@@ -72,4 +72,4 @@ class GoodsHead extends Component {
   }
 }
  
-export default GoodsHead;
+export default SellerHead;

@@ -17,22 +17,27 @@ class Login extends React.Component {
     this.state = {
       isActive:true,
       isLogin:false,
-      userData:{account:'',password:'',code:''},
+      userData:{account:'',password:'',s_code:''},
       head:{
         lgShow:false,
         history:this.props.history
       }
     };
+
     this.submit = this.submit.bind(this);
     this.toggle = this.toggle.bind(this);
     this.changText = this.changText.bind(this);
+    this.initData =  this.initData.bind(this);
   }
   submit (event) {
     event.preventDefault();
+    this.initData();
    this.props.addToCart('ff','ddd',54545);
    this.props.addTT(2324);
   }
-
+  binds (parme) {
+    this[parme] = this[parme].bind(this);
+  }
   changText (event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -43,7 +48,7 @@ class Login extends React.Component {
   }
   initData = async () => {
     try{
-      let result = await Axios.userlLogin();
+      let result = await Axios.userlLogin({data:{}});
       console.log(result);
     }catch(err){
       console.error(err);
@@ -78,12 +83,12 @@ class Login extends React.Component {
               </div>
             </div>
             <div className='f_warpper'>
-              <label htmlFor='code'>
+              <label htmlFor='s_code'>
                 验证码 :
-                <input id='code' type="text" value={this.state.userData.code} name='code' onChange={this.changText} />
+                <input id='s_code' type="text" value={this.state.userData.s_code} name='s_code' onChange={this.changText} />
               </label>
               <div className="codeImg">
-                <img src={require('../../images/captcha.png')} alt=""/>
+                <img src={"http://106.12.22.19/user/imagecode/"} alt=""/>
                 <div className='codeText'>
                   <p className='toggle_img'>换一张</p>
                 </div>
