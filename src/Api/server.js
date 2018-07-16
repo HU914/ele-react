@@ -7,7 +7,6 @@ if(process.env.NODE_ENV === 'development'){   // 判断系统环境是否
 }else{
   baseURL = '//api.cangdu.org';               // 生产环境的baseURL
 }
-
 export default class Server {                     // 默认输出 Server类
   axios(method,url,params) {                      // 初始化axios配置
     return new Promise ((resolve, reject) => {    // 返回一个新的promise对象 resolve：异步操作执行成功后的回调函数，reject:异步操作执行失败后的回调函数
@@ -23,12 +22,14 @@ export default class Server {                     // 默认输出 Server类
         headers:null,                             // 指定请求头{string}
         withCredentials:true,                     // 是否携带本地cookie
         validateStatus:(status)=>{         //如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte
-          return status >= 200 && status < 300;
+        console.log(22);
+        return status >= 200 && status < 300;
         },
         ...params,                                //外界传参
       }
       axios.request(AxiosConfig).then(res => {    // 发送请求
-        console.log(res.data);
+        console.log(34434);
+        console.log(res.data,1);
         resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data)) // 请求成功，promise resolve，服务端返回响应数据
       },error =>{                                                               
         if (error.response) {

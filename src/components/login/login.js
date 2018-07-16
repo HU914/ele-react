@@ -21,13 +21,25 @@ class Login extends React.Component {
       head:{
         lgShow:false,
         history:this.props.history
-      }
+      },
+      imgUrl:''
     };
 
     this.submit = this.submit.bind(this);
     this.toggle = this.toggle.bind(this);
     this.changText = this.changText.bind(this);
     this.initData =  this.initData.bind(this);
+  }
+  componentDidMount () {
+    this.initImg();
+  }
+  initImg = async () => {
+    try{
+      let result = await Axios.verifyImg();
+      console.log(result,1);
+    }catch(err){
+      console.error(err);
+    }
   }
   submit (event) {
     event.preventDefault();
@@ -48,7 +60,7 @@ class Login extends React.Component {
   }
   initData = async () => {
     try{
-      let result = await Axios.userlLogin({data:{}});
+      let result = await Axios.userlLogin({data:this.state.userData});
       console.log(result);
     }catch(err){
       console.error(err);
@@ -88,7 +100,7 @@ class Login extends React.Component {
                 <input id='s_code' type="text" value={this.state.userData.s_code} name='s_code' onChange={this.changText} />
               </label>
               <div className="codeImg">
-                <img src={"http://106.12.22.19/user/imagecode/"} alt=""/>
+                {/* <img src={"http://106.12.22.19/user/imagecode/"} alt=""/> */}
                 <div className='codeText'>
                   <p className='toggle_img'>换一张</p>
                 </div>
