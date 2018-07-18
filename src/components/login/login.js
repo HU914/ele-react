@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux'
-import {addToCart,addTT} from '../../store/cart/actions';
 import HeadTo from '../common/headTo/headTo';
 import Axios from '../../Api/Axios';
 import './login.less';
@@ -49,8 +47,6 @@ class Login extends React.Component {
   submit (event) {
     event.preventDefault();
     this.initData();
-   this.props.addToCart('ff','ddd',54545);
-   this.props.addTT(2324);
   }
   binds (parme) {
     this[parme] = this[parme].bind(this);
@@ -122,7 +118,6 @@ class Login extends React.Component {
           <div className="resetPass">
             <Link to='/resetPass' className='reset'>重置密码?</Link>
           </div>
-          {console.log(this.props.cart)}
         </div>
       </div>
     )
@@ -131,9 +126,11 @@ class Login extends React.Component {
  
 
 // connect 的原生用法，这里赋值的是 reducers的方法
-export default connect(state => ({
-  cart:state.buyCart
-}), {
-  addToCart,
-  addTT
-})(Login);
+export default Login
+
+// connect(state => ({
+//   cart:state.buyCart
+// }), {
+//   addToCart,
+//   addTT
+// })(Login);

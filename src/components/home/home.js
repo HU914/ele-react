@@ -19,7 +19,6 @@ class Login extends React.Component {
     };
   }
   componentDidUpdate() {
-    this._isMounted = true;
     window.addEventListener('scroll',() => {
       let head = document.querySelector('.headTo');
       let scroll = document.body.scrollTop || document.documentElement.scrollTop;

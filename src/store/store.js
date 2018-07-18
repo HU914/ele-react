@@ -8,5 +8,8 @@ const all = {
 const rootReducer = combineReducers(all);
 
 let store = createStore(rootReducer,composeWithDevTools()); //创建状态储存区域
-
+let unsubscribe = store.subscribe(() =>{
+  console.log(store.getState());
+})
+unsubscribe();
 export default store;

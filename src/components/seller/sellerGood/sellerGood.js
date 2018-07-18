@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Buy from '../../common/buy/buy';
 import './sellerGood.less';
 
 class Good extends Component {
@@ -86,6 +87,7 @@ class Good extends Component {
                     <div className="price">
                       <span>￥<span className="p-price"></span></span>
                       <span v-if="food.oldPrice" className="p-floor">￥</span>
+                      <Buy/>
                     </div>
                   </div>
                 </li>

@@ -1,24 +1,51 @@
-import {
-  ADD_TO_CART,
-  ADT_TO_CART,
-} from './actions-type';
-// 定义改变状态的方法，增加，减少，改变，type是必须存在的，
-/**
- * 
- * @param {*} product 产品
- * @param {*} quantity 数量
- * @param {*} unitCost 成本
- */
-export function addToCart (product, quantity, unitCost) {
+import * as types from './actions-type';
+
+    /**
+   * 商品数据
+   * @type {Array}
+   * example: [{
+   *    productId: 1, 商品ID 
+   *    productName: "PaiBot（2G/32G)", 商品名称
+   *    productPrice: 2999, 商品价格
+   *    count: 0, 选择数量
+   * }]
+   */
+// 添加商品
+export function addToCart (productId,productName,productPrice,count) {
   return {
-    type: ADD_TO_CART,
-    payload: { product, quantity, unitCost }
+    type: types.ADD_TO_CART,
+    goods:{
+      productId,
+      productName,
+      productPrice,
+      count
+    }
   }
 }
 
-export function addTT (kg) {
+// 编辑商品数量
+export function ProductCount(product) {
   return {
-    type: ADT_TO_CART,
-    payload:{kg}
+    type: types.PRODUCT_COUNT,
+    payload: {
+      product
+    }
+  }
+}
+
+// 删除商品
+export function deleteFromCart(product) {
+  return {
+    type: types.DELETE_FROM_CART,
+    payload: {
+      product
+    }
+  }
+}
+
+// 清空购物车
+export function clearAllCart () {
+  return {
+    type:types.CELAR_ALL_CART
   }
 }

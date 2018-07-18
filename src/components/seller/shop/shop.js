@@ -2,24 +2,19 @@ import React,{Component} from 'react'
 import {Link,Route} from 'react-router-dom';
 import SellerHead from '../sellerHead/sellerHead.js';
 import SellerGood from  '../sellerGood/sellerGood.js';
-import HeadTo from '../../common/headTo/headTo';
+import Cart from '../../common/cart/cart';
 import './shop.less';
 
 class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      head:{
-        lgShow:true,
-        position:false,
-        history:this.props.history
-      }
+      selectFoods:[1,2,3,4,6,1,2]
     }
   }
   render() { 
     return (
       <div className="good_warper">
-        <HeadTo name='' prop={this.state.head}/>
         <SellerHead />
         <div className="tab">
           <Link tag="li" to= "/shop" className="tab-item">商品</Link>
@@ -31,8 +26,8 @@ class Shop extends Component {
           <Route path='/shop/rating' component={SellerGood} />
           <Route path="/shop/seller" component={SellerGood} />
         </div>
-          {/* <cart ref="cart"></cart>
-          <goodsDetail ref="goodWrapper"></goodsDetail> */}
+         <Cart selectFoods={this.state.selectFoods}></Cart>
+          {/*  <goodsDetail ref="goodWrapper"></goodsDetail> */}
       </div>
     );
   }
