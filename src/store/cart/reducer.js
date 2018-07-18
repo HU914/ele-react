@@ -4,52 +4,31 @@ const initialState = {                 //模拟初始状态，
   cart: [],
 }
 
-const addGood = (state = initialState.cart,action) => {
-  switch (action.type) {
-    case types.ADD_TO_CART:
-    return {
-      ...state,
-      cart:state.map(item => item.prouductId === action.goods.prouductId ? action.goods : item)
-    }
-    default:
-      return state
-  }
-}
 
-const addGoodCount = (state = initialState.cart, action) => {
-  switch (action.type) {
-    case types.ADD_TO_CART: 
-      return {
-        ...state,
-        cart:state.map(item => item.prouductId === action.goods.prouductId ?( (item.count || 0) + 1) : item)
-      }
-    default:
-      return state
-  }
-}
-const reduceGoodCount = (state = initialState.cart, action) => {
-  switch (action.type) {
-    case types.ADD_TO_CART: 
-      return {
-        ...state,
-        cart:state.map(item => item.prouductId === action.goods.prouductId ? (item.count ? item.count + 1 : 1) : item)
-      }
-    default:
-      return state
-  }
-}
+
+
 
 export const cart = (state=initialState,action) => {     //在初始数据上 发布新数据，先到reducer，检查状态，
   switch(action.type) {
     case types.ADD_TO_CART: 
       return {
-        addGood: addGood(state.cart, action),
-        addGoodCount: addGoodCount(state.cart, action),
-        reduceGoodCount: reduceGoodCount(state.cart, action)
-      }
-    // case types.PRODUCT_COUNT: 
+        ...state,
+        cart:state.cart.map(item => item.prouductId === action.goods.prouductId ? item : action.goods)
+      } 
     
-    // case types.DELETE_FROM_CART: 
+    case types.DELETE_FROM_CART: 
+
+      return {
+        ...state,
+        cart:(function() {
+         return state.cart.map((item) => { 
+            if (item.prouductId === action.prouductId) {
+              item.count+=1;
+              return item;
+            }
+          })
+        })()
+      }
      
     // case types.CELAR_ALL_CART: 
      

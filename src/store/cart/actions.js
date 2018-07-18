@@ -23,6 +23,12 @@ export function addToCart (productId,productName,productPrice,count) {
   }
 }
 
+export function deleteFromCart(product) {
+  return {
+    type: types.DELETE_FROM_CART,
+    product
+  }
+}
 // 编辑商品数量
 export function ProductCount(product) {
   return {
@@ -34,14 +40,6 @@ export function ProductCount(product) {
 }
 
 // 删除商品
-export function deleteFromCart(product) {
-  return {
-    type: types.DELETE_FROM_CART,
-    payload: {
-      product
-    }
-  }
-}
 
 // 清空购物车
 export function clearAllCart () {
