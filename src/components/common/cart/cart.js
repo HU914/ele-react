@@ -92,8 +92,9 @@ class Cart extends Component {
       this.setState(scroll);
     }
     acquireHeight () {
-      var height = this.refs.cart;
-      return height.clientHeight;
+      var height = this.refs.cart.clientHeight;
+      this.props.getCartHeight(height)
+      return height;
     }
 
   render() { 

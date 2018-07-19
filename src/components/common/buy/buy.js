@@ -1,56 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {addToCart,deleteFromCart} from '../../../store/cart/actions';
+import {addToCart,reduceToCart} from '../../../store/cart/actions';
 import './buy.less';
 
 class Buy extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
-    this.addToCart = this.addToCart.bind(this);
-    this.deleteFromCart = this.deleteFromCart.bind(this);
+    this.state = {
+      count:0
+    }
+    this.goodCount = this.goodCount.bind(this);
   }
   
-
-  // addCart () {
-  //   if (!this.food.count) {
-  //     Vue.set(this.food, 'count', 1);
-  //   } else {
-  //     this.food.count++;
-  //   }
-  // }
-
-  // decreaseCart () {
-  //   if (this.food.count) {
-  //     this.food.count--;
-  //   }
-  // }
-
-
-  addToCart () {
-    this.props.addToCart(11,2,2,4);
+  goodCount (event) {
+    let type = event.target.getAttribute("data-add");
+    if (type === 'add') {
+      this.props.addToCart(11,2,2);
+      return
+    }
+    this.props.reduceToCart(11);
   }
-
-  deleteFromCart(){
-    this.props.deleteFromCart(11);
-  }
-
+  
   render() { 
-    console.log(this.props)
     return (
       <div className="buy">
-        <i /*  v-if= 'this.food.count' */ className="minus iconfont icon-wuuiconsuoxiao" onClick={this.addToCart} /* onTouchStart ={this.decreaseCart} */></i>
+        <i /*  v-if= 'this.food.count' */ className="minus iconfont icon-wuuiconsuoxiao" data-add='add' onClick={this.goodCount} /* onTouchStart ={this.decreaseCart} */></i>
         <span /*  v-if= 'this.food.count' */ className="count">{22/* this.props.food.count */}</span>
-        <i className="sum iconfont icon-msnui-add" onClick={this.deleteFromCart}/*  onTouchStart={this.addCart()} */></i>
+        <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='reduce'/*  onTouchStart={this.addCart()} */></i>
       </div>
     );
   }
 }
  
 export default connect(state =>({
-  cart:state.buyCart
+  carttt:state.buyCart
 }),
 {
   addToCart,
-  deleteFromCart
+  reduceToCart
 })(Buy);

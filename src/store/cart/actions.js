@@ -11,7 +11,7 @@ import * as types from './actions-type';
    * }]
    */
 // 添加商品
-export function addToCart (productId,productName,productPrice,count) {
+export function addToCart (productId,productName,productPrice,count=1) {
   return {
     type: types.ADD_TO_CART,
     goods:{
@@ -23,27 +23,18 @@ export function addToCart (productId,productName,productPrice,count) {
   }
 }
 
-export function deleteFromCart(product) {
+// 删除商品
+export function reduceToCart(product) {
   return {
     type: types.DELETE_FROM_CART,
     product
   }
 }
-// 编辑商品数量
-export function ProductCount(product) {
-  return {
-    type: types.PRODUCT_COUNT,
-    payload: {
-      product
-    }
-  }
-}
-
-// 删除商品
 
 // 清空购物车
 export function clearAllCart () {
   return {
-    type:types.CELAR_ALL_CART
+    type:types.CELAR_ALL_CART,
+    goods:[]
   }
 }
