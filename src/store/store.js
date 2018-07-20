@@ -2,13 +2,10 @@ import { createStore,combineReducers } from "redux";//combineReducers用于组�
 import {composeWithDevTools} from 'redux-devtools-extension'; //redux调试工具
 import {sellerCart} from './cart/reducer'; //引入cart reducer
 const shoppingCart = {
-  sellerCart,
+  sellerCart
 }
 const rootReducer = combineReducers(shoppingCart);
 
 let store = createStore(rootReducer,composeWithDevTools()); //创建状态储存区域
-let unsubscribe = store.subscribe(() =>{
-  console.log(store.getState());
-})
-unsubscribe();
+
 export default store;

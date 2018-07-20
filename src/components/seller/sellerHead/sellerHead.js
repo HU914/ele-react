@@ -1,14 +1,35 @@
 import React,{Component} from 'react'
 import './sellerHead.less';
 import Start from '../../common/star/star'
+import {NavLink} from 'react-router-dom';
 
 class SellerHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isGoodsDetail:false
+      isGoodsDetail:false,
+      classMap: []
     }
   }
+
+  privilege () {
+    let privilege = this.props.privilege.map((item,index) => {
+      return (
+        <li className="supports-item" key={index}/* v-for="(item,index) in seller.supports" : */>
+          <span className= {"icon " + this.state.classMap[item]}></span>
+          <span className="text">{item}</span> {/* seller.supports[index].description */}
+        </li>
+      )
+    }) 
+    return privilege;
+  }
+
+  componentDidMount () {
+    this.setState({
+      classMap:['decrease', 'discount', 'special', 'invoice', 'guarantee']
+    })
+  }
+
   showGoodsDetail () {
     this.setState(preState => ({
       isGoodsDetail:!preState.isGoodsDetail
@@ -27,15 +48,14 @@ class SellerHead extends Component {
           <div className="info">
             <p>优惠信息</p>
           </div>
-          {/* <ul className="supports">
-            <li className="supports-item>
-            </li>
-          </ul> */}
+          <ul /* v-if="seller.supports" */ className="supports">
+            {this.privilege()}
+          </ul>
           <div className ="info">
             <p>商家公告</p>
           </div>
           <div className="s_in">
-            <p></p>
+            <p>使肌肤开始开发借口数据大风大浪加肥加大山东理工犄角旮旯苦尽甘来卡几个空垃圾股卡死机咖喱鸡噶书了感觉阿萨健康</p>
           </div>
         </div>
       </div>
@@ -48,6 +68,14 @@ class SellerHead extends Component {
     }
     return (
       <div className="header">
+        <div className="h_title">
+          <div className='h_back'>
+            <NavLink to='/home'>
+              <i className='iconfont icon-left-circle'></i>
+            </NavLink>
+          </div>
+
+        </div>
       <div className="content">
         <div className="avatar">
           <img src={require('../../../images/captcha.png')} alt="" />
@@ -61,7 +89,7 @@ class SellerHead extends Component {
              蜂鸟专送 / 20分钟送达
            </div>
            <div className="supports" >
-             {/* <span className="icon" :className="classNameMap[seller.supports[0].type]"></span> */}
+             <span className={"icon " + this.state.classMap[0]}></span>
              <span className="text">在线支付满28减5</span>
            </div>
         </div>

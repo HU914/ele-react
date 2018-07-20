@@ -11,7 +11,7 @@ const initialState = {                 //模拟初始状态，
 const addToCart = (state=initialState,action) => {            // 添加商品
   if (state.sellerCart.length) {
       return state.sellerCart.map((item) => {
-        if (item.prouductId === action.goods.prouductId) {
+        if (item.product === action.goods.product) {
           item.count+=1;
           return item;
         } else {
@@ -26,7 +26,7 @@ const addToCart = (state=initialState,action) => {            // 添加商品
 const reduceToCart = (state=initialState,action) => {         // 删除商品
   if (state.sellerCart.length) {
     return state.sellerCart.map((item) => {
-      if (item.prouductId === action.prouductId) {
+      if (item.product === action.product) {
         if (item.count > 1) {
           item.count -= 1;
           return item;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import store from '../../../store/store';
+import Buy from '../buy/buy';
 import './cart.less';
 
 class Cart extends Component {
@@ -25,77 +27,70 @@ class Cart extends Component {
     let scroll = this.state.scroll;
     scroll.el = this.refs.goodItem;
     this.setState(scroll);
+    this.acquireHeight();
   }
 
-
-  // watch: {
-  //   selectFoods (val, tt) {
-  //     if (!val.length) {
-  //       this.isActive = false;
-  //     }
-  //   }
-  // },
-
-    ShowBlock () {
-      if (!this.props.selectFoods.length) {
-        this.setState({isActive:false});
-        return;
+  ShowBlock () {
+    if (!this.props.selectFoods.length) {
+      this.setState({isActive:false});
+      return;
+    }
+    this.setState((prevState) => {
+      return {isActive:!prevState.isActive}
+    })
+  }
+  clearAll () {
+    this.props.selectFoods.forEach(food => {
+      food.count = 0;
+    });
+  }
+  initScrollData (event) {
+    this.setState({initY : Math.ceil(event.changedTouches[0].clientY) + Math.abs(this.state.scroll.recordY)});
+  }
+  startScroll (event) {
+    let moveElm = this.state.scroll.el;
+    let scroll = this.state.scroll;
+    let scrollY = this.state.scrollY;
+    scrollY = scroll.scrollY  = scroll.recordY =  Math.ceil(event.changedTouches[0].clientY - this.state.initY)
+    this.setState({
+      scroll,
+      scrollY
+    })
+    if (this.state.scroll.scrollY < 0) {
+      moveElm.style.transition = 'none';
+      moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
+    } else {
+      moveElm.style.transition = 'none';
+      moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
+    }
+  }
+  entScroll () {
+    let moveElm = this.state.scroll.el;
+    let cartGoodsH = this.refs.goodsType;
+    let ul = this.state.scroll.el.querySelector(this.state.scroll.cls + '>ul');
+    let scroll = this.state.scroll;
+    if (this.state.scroll.scrollY < 0) {
+      let YY = cartGoodsH.clientHeight - this.acquireHeight() - ul.scrollHeight;
+      console.log(YY);
+      if (Math.abs(this.state.scroll.scrollY) >= Math.abs(YY)) {
+        scroll.recordY = scroll.scrollY = YY;
+        moveElm.style.top = YY + 'px';
+        moveElm.style.transition = 'all 0.2s';
       }
-      this.setState((prevState) => {
-        return {isActive:!prevState.isActive}
-      })
-    }
-    clearAll () {
-      this.props.selectFoods.forEach(food => {
-        food.count = 0;
-      });
-    }
-    initScrollData (event) {
-      this.setState({initY : Math.ceil(event.changedTouches[0].clientY) + Math.abs(this.state.scroll.recordY)});
-    }
-    startScroll (event) {
-      let moveElm = this.state.scroll.el;
-      let scroll = this.state.scroll;
-      let scrollY = this.state.scrollY;
-      scrollY = scroll.scrollY  = scroll.recordY =  Math.ceil(event.changedTouches[0].clientY - this.state.initY)
-      this.setState({
-        scroll,
-        scrollY
-      })
-      if (this.state.scroll.scrollY < 0) {
-        moveElm.style.transition = 'none';
-        moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
-      } else {
-        moveElm.style.transition = 'none';
-        moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
+    } else {
+      if (moveElm.getBoundingClientRect().top > 174) {
+        moveElm.style.top = scroll.recordY = 0;
+        moveElm.style.transition = 'all 0.2s';
       }
     }
-    entScroll () {
-      let moveElm = this.state.scroll.el;
-      let cartGoodsH = this.refs.goodsType;
-      let ul = this.state.scroll.el.querySelector(this.state.scroll.cls + '>ul');
-      let scroll = this.state.scroll;
-      if (this.state.scroll.scrollY < 0) {
-        let YY = cartGoodsH.clientHeight - this.acquireHeight() - ul.scrollHeight;
-        console.log(YY);
-        if (Math.abs(this.state.scroll.scrollY) >= Math.abs(YY)) {
-          scroll.recordY = scroll.scrollY = YY;
-          moveElm.style.top = YY + 'px';
-          moveElm.style.transition = 'all 0.2s';
-        }
-      } else {
-        if (moveElm.getBoundingClientRect().top > 174) {
-          moveElm.style.top = scroll.recordY = 0;
-          moveElm.style.transition = 'all 0.2s';
-        }
-      }
-      this.setState(scroll);
-    }
-    acquireHeight () {
-      var height = this.refs.cart.clientHeight;
-      this.props.getCartHeight(height)
-      return height;
-    }
+    this.setState(scroll);
+  }
+  acquireHeight () {
+    var height = this.refs.cart.clientHeight;
+    this.props.getCartHeight(height)
+    console.log(height);
+    return height;
+  }
 
   render() { 
     let goodList;
@@ -104,7 +99,7 @@ class Cart extends Component {
         <li className="typeItem"  key={index} onTouchStart= {this.initScrollData} onTouchMove = {this.startScroll} onTouchEnd= {this.entScroll}>
           <span className="goodsName">{val}</span>
           <span className="goodPrice">￥<span className="p-price">{val}</span></span>
-          {/* <BUY :food='val'></BUY> */}
+          <Buy food='val'></Buy>
         </li>
       )
     })

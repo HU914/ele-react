@@ -12,28 +12,38 @@ class Buy extends Component {
     this.goodCount = this.goodCount.bind(this);
   }
   
+  componentDidMount () {
+    let goods = this.props.cart;
+    let good = goods.filter(item => item.productId === this.props.good.name);
+    this.setState({
+      count:good.count
+    })
+  }
+
   goodCount (event) {
+    let good = this.props.good;
+    // let good = goods.filter(item => item.productId === this.props.good.name);
     let type = event.target.getAttribute("data-add");
     if (type === 'add') {
-      this.props.addToCart(11,2,2);
+      this.props.addToCart(good.name,good.name,good.price);
       return
     }
-    this.props.reduceToCart(11);
+    this.props.reduceToCart(good.name);
   }
   
   render() { 
     return (
       <div className="buy">
-        <i /*  v-if= 'this.food.count' */ className="minus iconfont icon-wuuiconsuoxiao" data-add='add' onClick={this.goodCount} /* onTouchStart ={this.decreaseCart} */></i>
-        <span /*  v-if= 'this.food.count' */ className="count">{22/* this.props.food.count */}</span>
-        <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='reduce'/*  onTouchStart={this.addCart()} */></i>
+        {this.state.count ? `<i  className="minus iconfont icon-wuuiconsuoxiao" data-add='reduce' onClick={this.goodCount} /* onTouchStart ={this.decreaseCart} */></i>
+      <span  className="count">{this.state.count}</span>` : ''}
+        <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='add'/*  onTouchStart={this.addCart()} */></i>
       </div>
     );
   }
 }
  
 export default connect(state =>({
-  carttt:state.buyCart
+  cart:state.sellerCart.sellerCart
 }),
 {
   addToCart,
