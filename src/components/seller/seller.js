@@ -36,7 +36,6 @@ class Goods extends React.Component {
             </div>
             <div className="swiper-slide">
               <div className="s_content">
-               
               </div>
             </div>
           </div>

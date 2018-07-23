@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import store from '../../../store/store';
-import Buy from '../buy/buy';
+// import Buy from '../buy/buy';
 import './cart.less';
 
 class Cart extends Component {
@@ -13,7 +12,7 @@ class Cart extends Component {
       scroll: {
         scrollY: 0,
         recordY: 0,
-        listY: [],
+        listY: [],  
         el: this.refs.goodItem,
         cls: '.goodItem'
       }
@@ -87,8 +86,7 @@ class Cart extends Component {
   }
   acquireHeight () {
     var height = this.refs.cart.clientHeight;
-    this.props.getCartHeight(height)
-    console.log(height);
+    this.props.getCartHeight(height);
     return height;
   }
 
@@ -99,7 +97,7 @@ class Cart extends Component {
         <li className="typeItem"  key={index} onTouchStart= {this.initScrollData} onTouchMove = {this.startScroll} onTouchEnd= {this.entScroll}>
           <span className="goodsName">{val}</span>
           <span className="goodPrice">￥<span className="p-price">{val}</span></span>
-          <Buy food='val'></Buy>
+          {/* <Buy></Buy> */}
         </li>
       )
     })

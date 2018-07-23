@@ -1190,7 +1190,6 @@ class Good extends Component {
     this.setState({
       cartHeight:H
     })
-    console.log(this.state.cartHeight);
   }
   foodItem = (val) => {
      let foodItem = val.map((item, index) => {

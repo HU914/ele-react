@@ -1,43 +1,43 @@
-import * as types from './actions-type'; //引入发布的状态
+import * as types from './actions-type'; //引入发布的状态 
 
 const initialState = {                 //模拟初始状态，
   sellerCart: []
 }
 
-
-const addToCart = (state=initialState,action) => {            // 添加商品
-  if (state.sellerCart.length) {
-      return state.sellerCart.map((item) => {
-        if (item.productId === action.goods.productId) {
-          item.count+=1;
-          return item;
-        } else {
-          console.log(2);
-          return [...state.sellerCart,action.goods]
-        }
-      })
-    }
-  return [...state.sellerCart,action.goods];
+const addToCart = (state=initialState.sellerCart,action) => {            // 添加商品
+  if (JSON.stringify(state).indexOf(JSON.stringify(action.goods.productId))!==-1) { //查询商品是否存在
+    let newState = state.map((item) => {
+      if (item.productId === action.goods.productId) { //存在 +1
+        item.count+=1;
+        console.log(item.count);
+        return item;
+      } else {
+        return item; // 不存在 返回原对象
+      }
+    })
+    return newState; //返回新的数组
+  }
+  return [...state,action.goods];
 }
 
-const reduceToCart = (state=initialState,action) => {         // 删除商品
-  if (state.sellerCart.length) {
-    return state.sellerCart.map((item) => {
-      if (item.productId === action.productId) {
+const reduceToCart = (state=initialState.sellerCart,action) => {         // 删除商品
+  if (JSON.stringify(state).indexOf(JSON.stringify(action.product))!==-1) {
+    let newState = state.map((item) => {
+      if (item.productId === action.product) {
         if (item.count > 1) {
           item.count -= 1;
           return item;
         } else {
           item.count = 0;
-          return state.sellerCart.filter(item => item.count !== 0)
+          return null
         }
       } else {
-        console.log(2);
-        return [...state.sellerCart,action.goods]
+        return item;
       }
     })
+    return newState;
   }
-  return [...state.sellerCart,action.goods];
+  return [...state,action.goods];
 }
 
 const clearAllCart = (action) => {         // 清空购物车
@@ -50,11 +50,13 @@ export const sellerCart = (state=initialState,action) => {     //在初始数据
   switch(action.type) {
     case types.ADD_TO_CART: 
       return {
-        sellerCart: addToCart(state,action)
-      } 
+        ...state,
+        sellerCart: addToCart(state.sellerCart, action)
+      }
     case types.DELETE_FROM_CART: 
       return {
-        sellerCart:reduceToCart(state,action)
+        ...state,
+        sellerCart:reduceToCart(state.sellerCart,action)
       }
     case types.CELAR_ALL_CART: 
       return {
