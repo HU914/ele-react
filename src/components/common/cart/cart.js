@@ -20,15 +20,14 @@ class Cart extends Component {
     this.initScrollData = this.initScrollData.bind(this);
     this.startScroll = this.startScroll.bind(this);
     this.entScroll = this.entScroll.bind(this);
+    this.acquireHeight = this.acquireHeight.bind(this);
   }
 
   componentDidMount () {
     let scroll = this.state.scroll;
     scroll.el = this.refs.goodItem;
     this.setState(scroll);
-    this.acquireHeight();
   }
-
   ShowBlock () {
     if (!this.props.selectFoods.length) {
       this.setState({isActive:false});
@@ -70,7 +69,6 @@ class Cart extends Component {
     let scroll = this.state.scroll;
     if (this.state.scroll.scrollY < 0) {
       let YY = cartGoodsH.clientHeight - this.acquireHeight() - ul.scrollHeight;
-      console.log(YY);
       if (Math.abs(this.state.scroll.scrollY) >= Math.abs(YY)) {
         scroll.recordY = scroll.scrollY = YY;
         moveElm.style.top = YY + 'px';
@@ -89,7 +87,6 @@ class Cart extends Component {
     this.props.getCartHeight(height);
     return height;
   }
-
   render() { 
     let goodList;
     goodList = this.props.selectFoods.map((val,index) =>{

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import store from '../../../store/store';
 import {addToCart,reduceToCart} from '../../../store/cart/actions';
 import './buy.less';
 
@@ -21,13 +20,29 @@ class Buy extends Component {
     }
     this.props.reduceToCart(good.name);
   }
-  
   render() { 
+    let code = '';
+    let good =  this.props.good;
+    let count = 0;
+    let { cart } = this.props;
+    cart.forEach(val => {
+      if (good.name === val.productName) {
+        count = val.count;
+      }
+    });
+    if (count <= 0 ) {
+      code =  <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='add'/*  onTouchStart={this.addCart()} */></i>
+    } else {
+      code =  <div>
+        <i  className="minus iconfont icon-wuuiconsuoxiao" data-add='reduce' onClick={this.goodCount} /* onTouchStart ={this.decreaseCart} */></i>
+        <span  className="count">{count}</span>
+        <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='add'/*  onTouchStart={this.addCart()} */></i>
+        </div>
+    }
     return (
       <div className="buy">
-        <i  className="minus iconfont icon-wuuiconsuoxiao" data-add='reduce' onClick={this.goodCount} /* onTouchStart ={this.decreaseCart} */></i>
-        <span  className="count">{this.state.count}</span>
-        <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='add'/*  onTouchStart={this.addCart()} */></i>
+        {code}
+       
       </div>
     );
   }

@@ -9,7 +9,6 @@ const addToCart = (state=initialState.sellerCart,action) => {            // 添�
     let newState = state.map((item) => {
       if (item.productId === action.goods.productId) { //存在 +1
         item.count+=1;
-        console.log(item.count);
         return item;
       } else {
         return item; // 不存在 返回原对象
@@ -29,7 +28,7 @@ const reduceToCart = (state=initialState.sellerCart,action) => {         // 删�
           return item;
         } else {
           item.count = 0;
-          return null
+          return item
         }
       } else {
         return item;
