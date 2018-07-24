@@ -1186,8 +1186,8 @@ class Good extends Component {
     }
     if (elem.cls === '.foodList') {     //判断事件元素是否为
       this.calculateHeight();           // 实时获取高度，保证菜单栏 选中状态 处于对应
+      this.switchMenuIndex();             // 实时获取 选中状态的index
     }
-    this.switchMenuIndex();             // 实时获取 选中状态的index
     this.setState(scroll);              //保存 滚动状态数据
   }
 

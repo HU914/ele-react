@@ -39,6 +39,7 @@ class Buy extends Component {
         <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='add'/*  onTouchStart={this.addCart()} */></i>
         </div>
     }
+    console.log(1);
     return (
       <div className="buy">
         {code}
