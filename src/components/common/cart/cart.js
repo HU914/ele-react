@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Buy from '../buy/buy';
+import Buy from '../buy/buy';
 import './cart.less';
 
 class Cart extends Component {
@@ -28,23 +28,25 @@ class Cart extends Component {
     scroll.el = this.refs.goodItem;
     this.setState(scroll);
   }
-  ShowBlock () {
-    if (!this.props.selectFoods.length) {
-      this.setState({isActive:false});
-      return;
+
+  onlineScroll (event) {                 //商品类型 + 商品  滚动效果 
+    let type = event.type;
+    switch (type) {
+      case 'touchstart':
+        this.initScrollData(event)
+        break;
+      case 'touchmove':
+        this.startScroll(event)  
+        break;
+      default:
+        this.entScroll()
     }
-    this.setState((prevState) => {
-      return {isActive:!prevState.isActive}
-    })
   }
-  clearAll () {
-    this.props.selectFoods.forEach(food => {
-      food.count = 0;
-    });
-  }
+  
   initScrollData (event) {
     this.setState({initY : Math.ceil(event.changedTouches[0].clientY) + Math.abs(this.state.scroll.recordY)});
   }
+
   startScroll (event) {
     let moveElm = this.state.scroll.el;
     let scroll = this.state.scroll;
@@ -62,6 +64,7 @@ class Cart extends Component {
       moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
     }
   }
+
   entScroll () {
     let moveElm = this.state.scroll.el;
     let cartGoodsH = this.refs.goodsType;
@@ -75,26 +78,52 @@ class Cart extends Component {
         moveElm.style.transition = 'all 0.2s';
       }
     } else {
-      if (moveElm.getBoundingClientRect().top > 174) {
+      if (moveElm.getBoundingClientRect().top > 0) {
         moveElm.style.top = scroll.recordY = 0;
         moveElm.style.transition = 'all 0.2s';
       }
     }
     this.setState(scroll);
   }
-  acquireHeight () {
+
+  ShowBlock () {                         // 购物车 商品列表 显示
+    if (!this.props.selectFoods.length) {
+      this.setState({isActive:false});
+      return;
+    }
+    this.setState((prevState) => {
+      return {isActive:!prevState.isActive}
+    })
+  }
+  
+  clearAll () {                           // 清空购物车
+    this.props.selectFoods.forEach(food => {
+      food.count = 0;
+    });
+  }
+
+  acquireHeight () {                      // 获取购物车视口高度，用于计算滚动差距
     var height = this.refs.cart.clientHeight;
     this.props.getCartHeight(height);
     return height;
   }
+
   render() { 
     let goodList;
-    goodList = this.props.selectFoods.map((val,index) =>{
+    let {selectFoods} = this.props;
+    let totalPrice = 0;     // 总金额
+    let serverPrice = 45;  //配送费用
+    goodList = selectFoods.map((val,index) =>{
+      totalPrice += (val.price * val.count);
+      serverPrice = (serverPrice - totalPrice);
+      if ( serverPrice <= 0) {
+        serverPrice = 0;
+      }
       return (
-        <li className="typeItem"  key={index} onTouchStart= {this.initScrollData} onTouchMove = {this.startScroll} onTouchEnd= {this.entScroll}>
-          <span className="goodsName">{val}</span>
-          <span className="goodPrice">￥<span className="p-price">{val}</span></span>
-          {/* <Buy></Buy> */}
+        <li className="typeItem"  key={val.id}  onTouchStart={(event) =>this.onlineScroll(event)} onTouchMove={(event) =>this.onlineScroll(event)} onTouchEnd={(event) =>this.onlineScroll(event)}>
+          <span className="goodsName">{val.name}</span>
+          <span className="goodPrice">￥<span className="p-price">{val.price * val.count}</span></span>
+          <Buy good={val}></Buy>
         </li>
       )
     })
@@ -114,19 +143,19 @@ class Cart extends Component {
         </div>
       </div>
       <div className="c-c" onClick={this.ShowBlock.bind(this)}>
-        <div className="c-c-c" >{/* :className="{c_c_count:selectFoods.length}" */}
+        <div className={"c-c-c " + (selectFoods.length ? 'c_c_count' : '') }>{/* :className="{c_c_count:selectFoods.length}" */}
           <span className="iconfont icon-gouwuche"></span>
         </div>
-        <div className="count" v-show="totalCount">
-         <span>{/*  {{totalCount}} */}</span>
-        </div>
+        {selectFoods.length ? <div className="count" v-show="totalCount">
+         <span>{selectFoods.length}</span>
+        </div> : ''}
       </div>
       <div className="c-left">
         <div className="c-price">
-          <span className="c-p-prize">￥45</span>
+          <span className="c-p-prize">￥{totalPrice}</span>
         </div>
         <div className="c-info">
-          <span className="c-i-info">另需配送费￥45元</span>
+          <span className="c-i-info">另需配送费￥{serverPrice}元</span>
         </div>
       </div>
       <div className="c-right">

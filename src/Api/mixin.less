@@ -21,6 +21,9 @@
 .fz(@px) {
   font-size: @px / 100rem;
 }
+.box(@name,@px, @px2, @px3, @px4,@color) {
+  @{name}:@px / 100rem @px2 / 100rem @px3 / 100rem @px4 / 100rem @color;
+};
 .bd(@border,@px,@color,@solid:solid) {
   @{border}:@px / 100rem @solid @color;
 }

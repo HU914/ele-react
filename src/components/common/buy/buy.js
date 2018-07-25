@@ -26,7 +26,7 @@ class Buy extends Component {
     let count = 0;
     let { cart } = this.props;
     cart.forEach(val => {
-      if (good.name === val.productName) {
+      if (good.name === val.name) {
         count = val.count;
       }
     });
@@ -39,11 +39,9 @@ class Buy extends Component {
         <i className="sum iconfont icon-msnui-add" onClick={this.goodCount} data-add='add'/*  onTouchStart={this.addCart()} */></i>
         </div>
     }
-    console.log(1);
     return (
       <div className="buy">
-        {code}
-       
+        {code}  
       </div>
     );
   }

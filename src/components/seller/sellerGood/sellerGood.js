@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
+import {connect} from 'react-redux';
 import Cart from '../../common/cart/cart';
 import Buy from '../../common/buy/buy';
+import GoodsDetail from './goodsDetail';
 import './sellerGood.less';
 
 class Good extends Component {
@@ -1085,9 +1087,11 @@ class Good extends Component {
         ],
       selectFoods:[0,1,2,3,4],
       initY: 0,
+      goodDetail:false,
       scrollY: 0,
       cartHeight:48,
       listH: [],
+      foodList:{},
       classMap: [],
       scroll: {
         menu: {
@@ -1110,6 +1114,8 @@ class Good extends Component {
     this.onlineScroll = this.onlineScroll.bind(this);
     this.getCartHeight = this.getCartHeight.bind(this);
     this.toggleNav = this.toggleNav.bind(this);
+    this.goodDetail = this.goodDetail.bind(this);
+    this.acquire = this.acquire.bind(this);
   }
 
   componentDidMount () {
@@ -1258,6 +1264,16 @@ class Good extends Component {
     })
   }
 
+  goodDetail() {          // 控制详情页的显示
+    this.setState(preState => ({
+      goodDetail:!preState.goodDetail
+    }))
+  }
+
+  acquire (food) {             //获取商品信息
+    this.setState({foodList:food});
+  }
+
   foodItem = (val) => {   // 渲染单个商品
      let foodItem = val.map((item, index) => {
        let oldPrice ='';
@@ -1265,8 +1281,8 @@ class Good extends Component {
          oldPrice = <span  className="p-floor">￥{item.oldPrice}</span>
        }
        return (
-         <li  className="foodItem" key={index}>
-           <div className="icon">
+         <li  className="foodItem" key={index} onClick={() => this.acquire(item)}>
+           <div className="icon" onClick={this.goodDetail}>
              <img src={item.icon} alt=''/>
            </div>
            <div className="f-conent">
@@ -1321,6 +1337,7 @@ class Good extends Component {
   }
 
   render() { 
+    let cartList = this.props.cartList;
     return (
       <div className="goods" ref='goods'>
         <div className="menu"  ref="menu" onTouchStart={(event) =>this.onlineScroll(event,'menu')} onTouchMove={(event) =>this.onlineScroll(event,'menu')} onTouchEnd={(event) =>this.onlineScroll(event,'menu')}>
@@ -1333,11 +1350,13 @@ class Good extends Component {
             {this.foodsBar()}
           </ul>
         </div>
-        <Cart selectFoods={this.state.selectFoods} getCartHeight={this.getCartHeight}></Cart>
-          {/*  <goodsDetail ref="goodWrapper"></goodsDetail> */}
+        <Cart selectFoods={cartList} getCartHeight={this.getCartHeight}></Cart>
+        <GoodsDetail  good={this.state.foodList} isActive={this.state.goodDetail} goodDetail={this.goodDetail}/>
       </div>  
     );
   }
 }
  
-export default Good;
+export default connect(state =>({
+  cartList:state.sellerCart.sellerCart
+}))(Good)

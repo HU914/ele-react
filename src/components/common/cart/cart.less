@@ -77,7 +77,7 @@
   }
   .c-c {
     position: absolute;
-    .px2Rem(left, 36);
+    .px2Rem(left, 24);
     .px2Rem(bottom, 16);
     .wh(116, 116);
     text-align: center;
@@ -91,7 +91,6 @@
       border-radius: 50%;
       color: rgba(255,255,255,0.4);
       background-color: rgba(255,255,255,0.4);
-      // background-color: red;
     }
     .c_c_count {
       .c-c-c;
@@ -109,18 +108,19 @@
       .px2Rem2(border-radius,12,12);
       .px2Rem(font-size,18);
       .px2Rem(line-height,32);
-      // .box(box-shadow,0,4,8,0,rgba(0,0,0,0.4));
+      .box(box-shadow,0,4,8,0,rgba(0,0,0,0.4));
     }
   }
   .c-left {
-    flex: 1;
     display: flex;
     .c-price {
       flex: 1;
+      text-align: right;
       .px2Rem(line-height, 48);
-      .px2Rem4(padding, 0, 24, 0, 160);
+      .px2Rem(width, 380);
+      .px2Rem(padding-right, 24);
       .px2Rem2(margin, 24, 0);
-      // .bd(border-right, 2, solid, rgba(255,255,255,0.1));
+      .bd(border-right, 2, solid, rgba(255,255,255,0.1));
       .c-p-prize {
         display: inline-block;
         color: rgb(255,255,255);
@@ -131,7 +131,7 @@
     .c-info {
       .px2Rem(line-height, 96);
       .px2Rem(padding-left,24);
-      .px2Rem(padding-right, 68);
+      .px2Rem(padding-right, 20);
       .c-i-info {
         display: inline-block;
         color: rgba(255,255,255,0.4);

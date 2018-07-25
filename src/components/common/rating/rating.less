@@ -1,0 +1,59 @@
+@import '../../../Api/mixin.less';
+.ratingSelect {
+  .px2Rem(padding-top,24);
+  .ratingType {
+    .px2Rem2(margin,0, 36);
+    .px2Rem(padding-bottom,36 );
+    .bd(border-bottom,2,rgba(7,17,27,0.1));
+    .block {
+      display:inline-block;
+      color: rgb(77,85,93);
+      background-color: rgb(0,160,220);
+      .px2Rem2(padding,16,24);
+      .px2Rem(margin-right,24);
+      .px2Rem(border-radius,4);
+      .px2Rem(line-height,32);
+      .text {
+        font-weight: 700;
+        .px2Rem(font-size,28);
+      }
+      .ratingSum {
+        .px2Rem(font-size,16);
+        .px2Rem(margin-left,10);
+      }
+      &.active {
+        color: #fff;
+      }
+      &.goodPositive {
+        background-color: rgba(0,160,220,0.2);
+        &.active {
+          background-color: rgb(0,160,220);
+        }
+      }
+      &.goodNegative {
+        background-color: rgba(77,85,93,0.2);
+        &.active {
+          background-color: rgb(77,85,93);
+        }
+      }
+    }
+  }
+  .switch{
+    .px2Rem2(padding,24, 36);
+    .bd(border-bottom,2,rgba(7,17,27,0.1));
+    .icon-gou {
+      color: rgb(147,153,159);
+      vertical-align: middle;
+      .px2Rem(font-size, 24);
+      .px2Rem(line-height, 48);
+      &.active {
+        color: rgb(0,160,220);
+      }
+    }
+    .text {
+      .px2Rem(font-size,24);
+      .px2Rem(line-height,48);
+      .px2Rem(margin-left,8);
+    }
+  }
+}
