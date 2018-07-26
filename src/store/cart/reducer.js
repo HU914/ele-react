@@ -47,11 +47,6 @@ const reduceToCart = (state=initialState.sellerCart,action) => {         // 删�
   return [...state,action.goods];
 }
 
-const clearAllCart = (action) => {         // 清空购物车
-  return [action.goods]
-}
-
-
 
 export const sellerCart = (state=initialState,action) => {     // 更改数据过程，reducer，
   switch(action.type) {
@@ -67,7 +62,7 @@ export const sellerCart = (state=initialState,action) => {     // 更改数据�
       }
     case types.CELAR_ALL_CART: 
       return {
-        sellerCart:clearAllCart(action)
+        sellerCart:[]     // 清空购物车
       }
     default:
     return state;                             // 修改状态后的返回值

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {clearAllCart} from '../../../store/cart/actions';
 import Buy from '../buy/buy';
 import './cart.less';
 
@@ -97,9 +99,8 @@ class Cart extends Component {
   }
   
   clearAll () {                           // 清空购物车
-    this.props.selectFoods.forEach(food => {
-      food.count = 0;
-    });
+    this.props.clearAllCart();
+    this.ShowBlock();
   }
 
   acquireHeight () {                      // 获取购物车视口高度，用于计算滚动差距
@@ -166,4 +167,8 @@ class Cart extends Component {
   }
 }
  
-export default Cart;
+export default connect(state => ({
+
+}),{
+  clearAllCart
+})(Cart);

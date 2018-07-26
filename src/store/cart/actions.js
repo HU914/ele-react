@@ -37,7 +37,6 @@ export function reduceToCart(id) {
 */
 export function clearAllCart () {
   return {
-    type:types.CELAR_ALL_CART,
-    goods:[]
+    type:types.CELAR_ALL_CART
   }
 }
