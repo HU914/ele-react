@@ -10,29 +10,29 @@
     .tab-item {
       flex: 1;
       display: block;
+      position: relative;
       text-align: center;
+      transition-property: 'font-size', 'border';
+      transition-duration:.3s;
       color: rgb(77,85,93);
       .px2Rem(font-size,28);
       &.active {
         color: #f01414;
+        .fz(36);
+      }
+      &.active:before{
+        content:'';
+        position:absolute;
+        transition: all .3s;
+        .bd(border-bottom,2,#f01414);
+        left:0%;
+        right:0%;
+        bottom:0px;
+      }
+      &.active:active:before {
+        left:51%;
+        right:56%
       }
     }
-  }
-  .example-enter {
-    opacity: 0.01;
-  }
-  
-  .example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
-  
-  .example-leave {
-    opacity: 1;
-  }
-  
-  .example-leave.example-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
   }
 }

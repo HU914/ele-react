@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Link,Route} from 'react-router-dom';
+import {NavLink,Route} from 'react-router-dom';
 import SellerHead from '../sellerHead/sellerHead.js';
 import SellerGood from  '../sellerGood/sellerGood.js';
 import SellerRating from  '../sellerRating/sellerRating.js';
@@ -10,6 +10,8 @@ class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
+      showValidationMessage: false,
       selectFoods:[0,1,2,3,4],
       seller: {
         "name": "粥品香坊（回龙观）",
@@ -61,16 +63,22 @@ class Shop extends Component {
         ]
       },
     }
+    this.toggle = this.toggle.bind(this)
   }
 
+  toggle () {
+    this.setState({
+      showValidationButton: true,
+    });
+  }
   render() {
     return (
       <div className="good_warper">
         <SellerHead  privilege={this.state.seller} />
         <div className="tab">
-          <Link tag="li" to= "/shop" className="tab-item">商品</Link>
-          <Link tag="li" to= "/shop/rating" className="tab-item">评论</Link>
-          <Link tag="li" to= "/shop/seller" className="tab-item">商家</Link>
+          <NavLink exact tag="li" to= "/shop" className="tab-item" onClick={this.toggle}>商品</NavLink>
+          <NavLink tag="li" to= "/shop/rating" className="tab-item" onClick={this.toggle}>评论</NavLink>
+          <NavLink tag="li" to= "/shop/seller" className="tab-item" onClick={this.toggle}>商家</NavLink>
         </div>
         <div 
         className="sellerMain">
