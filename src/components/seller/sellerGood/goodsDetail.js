@@ -240,7 +240,7 @@ class goodsDetail extends Component {
               {
                 this.props.good.ratings ?
                 <ul>{this.ratingItem()}</ul> :
-                <div className="noRating" v-if="!food.ratings || !food.ratings.length">
+                <div className="noRating">
                   <p>暂无评价!</p>
                 </div>
               }

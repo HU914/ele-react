@@ -13,11 +13,12 @@ class SellerHead extends Component {
   }
 
   privilege () {
-    let privilege = this.props.privilege.map((item,index) => {
+    let seller = this.props.privilege;
+    let privilege = seller.supports.map((item,index) => {
       return (
-        <li className="supports-item" key={index}/* v-for="(item,index) in seller.supports" : */>
-          <span className= {"icon " + this.state.classMap[item]}></span>
-          <span className="text">{item}</span> {/* seller.supports[index].description */}
+        <li className="supports-item" key={index}>
+          <span className= {"icon " + this.state.classMap[seller.supports[index].type]}></span>
+          <span className="text">{seller.supports[index].description}</span>
         </li>
       )
     }) 
@@ -38,7 +39,7 @@ class SellerHead extends Component {
   render() { 
     let detail;
     if (this.state.isGoodsDetail) {
-      detail = <div v-show="detailShow" className="detail">
+      detail = <div  className="detail">
       <div className="c_warp" >
         <div className="c_c">
           <h1 className="name">木马打火锅</h1>
@@ -55,7 +56,7 @@ class SellerHead extends Component {
             <p>商家公告</p>
           </div>
           <div className="s_in">
-            <p>使肌肤开始开发借口数据大风大浪加肥加大山东理工犄角旮旯苦尽甘来卡几个空垃圾股卡死机咖喱鸡噶书了感觉阿萨健康</p>
+            <p>{this.props.privilege.bulletin}</p>
           </div>
         </div>
       </div>

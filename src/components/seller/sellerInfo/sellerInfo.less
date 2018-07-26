@@ -1,0 +1,172 @@
+@import '../../../Api/mixin.less';
+.seller {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  .px2Rem(top, 382);
+  .px2Rem(bottom, 0);
+  .px2Rem(padding-bottom,96);
+  .sellerContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .splict {
+      widows: 100%;
+      .px2Rem(height,32);
+      .bd(border-top, 2, solid, rgba(7,17,27,0.1));
+      .bd(border-bottom, 2, solid, rgba(7,17,27,0.1));
+      background-color: #f3f5f7;
+    }
+    .market {
+      .px2Rem2(padding,36, 36);
+      .garde {
+        display: flex;
+        .bd(border-bottom, 2, solid, rgba(7,17,27,0.1));
+        .gardeInfo {
+          .sellerName {
+            color: rgb(7, 17,27);
+            .px2Rem(font-size,28);
+            .px2Rem(line-height,28);
+          }
+          .gardeContent {
+            display: flex;
+            .px2Rem4(padding,16,0,30,0);
+            .ratingCount {
+              .px2Rem4(padding, 0,24,0,16);
+              color: rgb(77,85,93);
+              .px2Rem(font-size,20);
+              .px2Rem(line-height,20);
+            }
+            .shopCount {
+              color: rgb(77,85,93);
+              .px2Rem(font-size,20);
+              .px2Rem(line-height,20);
+            }
+          }
+        }
+        .collect {
+          flex: 1;
+          text-align: right;
+          .icon-xin {
+            color: rgba(7,17,27,0.2);
+            .px2Rem(font-size,40);
+            .px2Rem(line-height,48);
+            &.collect {
+              color: rgb(240,20,20);
+            }
+          }
+          .collectText {
+            display: block;
+            color: rgb(77,85,93);
+            .px2Rem(font-size,20);
+            .px2Rem(line-height,20);
+          }
+        }
+      }
+      .marketServer {
+        display: flex;
+        .px2Rem(padding-top,36);
+        .serverDesc {
+          flex: 1;
+          text-align: center;
+          color: rgb(7, 17,27);
+          .bd(border-right,2,solid,rgba(7,17,27,0.1));
+          .serverTitle {
+            color: rgb(147,153,159);
+            .px2Rem(font-size,20);
+            .px2Rem(line-height,20);
+            .px2Rem(padding-bottom,8);
+          }
+          .number {
+            .px2Rem(font-size,48);
+            .px2Rem(line-height,48);
+          }
+        }
+      }
+    }
+    .saleNotice {
+        .px2Rem4(padding,36,36,0,36);
+      .title {
+        color: rgb(7, 17,27);
+        .px2Rem(font-size,28);
+        .px2Rem(line-height,28);
+      }
+      .bulletin{
+        color: rgb(240,20,20);
+        .px2Rem4(padding,16,24,32,24);
+        .px2Rem(font-size,24);
+        .px2Rem(line-height,48);
+        .bd(border-bottom,2,solid,rgba(7,17,27,0.1));
+      }
+      .saleNoticeItem {
+        .px2Rem2(padding,32,24);
+        .px2Rem(line-height, 32);
+        .bd(border-bottom,2,solid,rgba(7,17,27,0.1));
+        .icon {
+          display: inline-block;
+          .wh(32,32);
+          .px2Rem(margin-right,12);
+          .px2Rem(background-size,32);
+          background-repeat: no-repeat;
+          &.decrease {
+            .bgImg('../images/decrease_4');
+          }
+          &.discount {
+            .bgImg('../images/discount_4');
+          }
+          &.guarantee {
+            .bgImg('../images/guarantee_4');
+          }
+          &.invoice {
+            .bgImg('../images/invoice_4');
+          }
+          &.special {
+            .bgImg('../images/special_4');
+          }
+        }
+        .text {
+            vertical-align: top;
+            .px2Rem(font-size, 24);
+            color: rgb(7,17,27);
+          }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+    .shopImg {
+      .px2Rem2(padding,32,32);
+      .title {
+        .saleNotice.title;
+      }
+      .swiper-container {
+        width: 100%;
+        border: none;
+        .px2Rem(height,240);
+        .px2Rem(padding-top,24);
+        .swiper-slide {
+          .goodsImg {
+            width: 100VW;
+            .px2Rem(height,240);
+          }
+        }
+      }
+    }
+    .shopInfo {
+      .px2Rem4(padding,32,24,0,24);
+      .px2Rem(line-height, 32);
+      .title {
+        .saleNotice.title;
+        .px2Rem(padding-bottom,24);
+      }
+      .shopInfoItem {
+        .px2Rem2(padding,32,24);
+        .px2Rem(line-height, 32);
+        .bd(border-bottom,2,solid,rgba(7,17,27,0.1));
+         &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
