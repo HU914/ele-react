@@ -1,9 +1,11 @@
 import React,{Component} from 'react'
-import {NavLink,Route} from 'react-router-dom';
+import {NavLink,Route,Switch} from 'react-router-dom';
 import SellerHead from '../sellerHead/sellerHead.js';
 import SellerGood from  '../sellerGood/sellerGood.js';
 import SellerRating from  '../sellerRating/sellerRating.js';
 import SellerInfo from  '../sellerInfo/sellerInfo.js';
+// import '../../common/animated/animated.less';
+// import { TransitionGroup, CSSTransition } from "react-transition-group";
 import './shop.less';
 
 class Shop extends Component {
@@ -63,28 +65,23 @@ class Shop extends Component {
         ]
       },
     }
-    this.toggle = this.toggle.bind(this)
   }
 
-  toggle () {
-    this.setState({
-      showValidationButton: true,
-    });
-  }
   render() {
     return (
       <div className="good_warper">
         <SellerHead  privilege={this.state.seller} />
         <div className="tab">
-          <NavLink exact tag="li" to= "/shop" className="tab-item" onClick={this.toggle}>商品</NavLink>
-          <NavLink tag="li" to= "/shop/rating" className="tab-item" onClick={this.toggle}>评论</NavLink>
-          <NavLink tag="li" to= "/shop/seller" className="tab-item" onClick={this.toggle}>商家</NavLink>
+          <NavLink exact tag="li" to= "/shop" className="tab-item">商品</NavLink>
+          <NavLink tag="li" to= "/shop/rating" className="tab-item">评论</NavLink>
+          <NavLink tag="li" to= "/shop/seller" className="tab-item">商家</NavLink>
         </div>
-        <div 
-        className="sellerMain">
-          <Route exact  path='/shop' component={SellerGood} />
-          <Route path='/shop/rating' component={SellerRating} />
-          <Route path="/shop/seller" component={SellerInfo} />
+        <div className="sellerMain">
+          <Switch>
+            <Route exact  path='/shop' component={SellerGood} />
+            <Route path='/shop/rating' component={SellerRating} />
+            <Route path="/shop/seller" component={SellerInfo} />
+          </Switch>
         </div>
       </div>
     );

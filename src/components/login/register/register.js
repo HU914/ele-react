@@ -1,14 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import HeadTo from '../common/headTo/headTo';
-import Axios from '../../Api/Axios';
-import './login.less';
+import HeadTo from '../../common/headTo/headTo';
+import Axios from '../../../Api/Axios';
+import './register.less';
  
-/* @connect(                                //使用插件解析connect
-  state =>({obj:state.buyCart}),
-  {addToCart}
-) */
-class Login extends React.Component {
+class Register extends React.Component {
   
   constructor(props) {
     super(props);
@@ -28,9 +24,11 @@ class Login extends React.Component {
     this.changText = this.changText.bind(this);
     this.initData =  this.initData.bind(this);
   }
+
   componentDidMount () {
     this.initImg();
   }
+
   initImg = async () => {
     try{
       let result = await Axios.verifyImg();
@@ -41,16 +39,20 @@ class Login extends React.Component {
       console.error(err);
     }
   }
+
   cutterImg () {
     this.initImg();
   }
+
   submit (event) {
     event.preventDefault();
     this.initData();
   }
+
   binds (parme) {
     this[parme] = this[parme].bind(this);
   }
+
   changText (event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -59,6 +61,7 @@ class Login extends React.Component {
     userData[name] = value;
     this.setState(userData);
   }
+
   initData = async () => {
     try{
       let result = await Axios.userlLogin({data:this.state.userData});
@@ -67,28 +70,29 @@ class Login extends React.Component {
       console.error(err);
     }
   }
+
   toggle () {
     this.setState(preState => ({
       isActive:!preState.isActive
     }));
   }
-  render() {
 
+  render() {
     return (
       <div className="lr">
-        <HeadTo name='登录' prop={this.state.head}/>
+        <HeadTo name='注册' prop={this.state.head}/>
         <div className="lr_main">
-          <form  id='userData' onSubmit={this.submit}>
+          <form onSubmit={this.submit}>
             <div className='f_warpper'>
               <label htmlFor='username'>
                 账　号 :
-                <input id='username' type="text" autoFocus="autoFocus" value={this.state.userData.username} name='username' onChange={this.changText} />
+                <input type="text" autoFocus="autoFocus" value={this.state.userData.username} name='username' onChange={this.changText} />
               </label>
             </div>
             <div className='f_warpper'>
               <label htmlFor='password'>
                 密　码 :
-                <input id='password' type={this.state.isActive ? 'password' : 'text'} value={this.state.userData.password} name='password' onChange={this.changText} />
+                <input type={this.state.isActive ? 'password' : 'text'} value={this.state.userData.password} name='password' onChange={this.changText} />
               </label>
               <div className="togg_warpper" >
                 <i className={this.state.isActive ? 'toggle psHidden': 'toggle'} onClick={this.toggle}></i>
@@ -98,7 +102,7 @@ class Login extends React.Component {
             <div className='f_warpper'>
               <label htmlFor='s_code'>
                 验证码 :
-                <input id='s_code' type="text" value={this.state.userData.s_code} name='s_code' onChange={this.changText} />
+                <input  className='s_code' type="text" value={this.state.userData.s_code} name='s_code' onChange={this.changText} />
               </label>
               <div className="codeImg">
                 <img src={this.state.imgUrl} alt=""/>
@@ -125,12 +129,4 @@ class Login extends React.Component {
 }
  
 
-// connect 的原生用法，这里赋值的是 reducers的方法
-export default Login
-
-// connect(state => ({
-//   cart:state.buyCart
-// }), {
-//   addToCart,
-//   addTT
-// })(Login);
+export default Register

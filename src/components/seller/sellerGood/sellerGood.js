@@ -4,6 +4,8 @@ import Cart from '../../common/cart/cart';
 import Buy from '../../common/buy/buy';
 import GoodsDetail from './goodsDetail';
 import './sellerGood.less';
+import { CSSTransition} from "react-transition-group";
+import '../../common/animated/animated.less';
 
 class Good extends Component {
   constructor(props) {
@@ -1351,7 +1353,14 @@ class Good extends Component {
           </ul>
         </div>
         <Cart selectFoods={cartList} getCartHeight={this.getCartHeight}></Cart>
-        <GoodsDetail  good={this.state.foodList} isActive={this.state.goodDetail} goodDetail={this.goodDetail}/>
+        <CSSTransition 
+        in={this.state.goodDetail}
+        classNames="fadeInRightO" 
+        timeout={500}
+        unmountOnExit
+        >
+          <GoodsDetail  good={this.state.foodList} isActive={this.state.goodDetail} goodDetail={this.goodDetail}/>
+        </CSSTransition>
       </div>  
     );
   }

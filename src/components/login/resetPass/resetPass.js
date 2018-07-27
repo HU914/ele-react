@@ -1,5 +1,6 @@
 import React from 'react';
-import HeadTo from '../common/headTo/headTo';
+import HeadTo from '../../common/headTo/headTo';
+import Axios from '../../../Api/Axios';
 import './resetPass.less';
 
 class ResetPass extends React.Component {
@@ -7,6 +8,7 @@ class ResetPass extends React.Component {
     super(props);
     this.state = {
       isLogin:true,
+      imgUrl:'',
       head:{
         lgShow:false,
         history:this.props.history
@@ -18,6 +20,25 @@ class ResetPass extends React.Component {
 
       }
     }
+  }
+
+  componentDidMount () {
+    this.initImg();
+  }
+
+  initImg = async () => {
+    try{
+      let result = await Axios.verifyImg();
+      this.setState(preState => ({
+        imgUrl:result.data.code
+      }));
+    }catch(err){
+      console.error(err);
+    }
+  }
+
+  cutterImg () {
+    this.initImg();
   }
 
   submit (event) {
@@ -60,7 +81,7 @@ class ResetPass extends React.Component {
                 <input type="text" id='code'/>
               </label>
               <div className="codeImg">
-                <img src={require('../../images/captcha.png')} alt=""/>
+                <img src={this.state.imgUrl} alt=""/>
                 <div className='codeText'>
                   <p className='toggle_img'>换一张</p>
                 </div>

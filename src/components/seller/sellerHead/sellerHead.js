@@ -1,34 +1,18 @@
 import React,{Component} from 'react'
-import './sellerHead.less';
-import Start from '../../common/star/star'
 import {NavLink} from 'react-router-dom';
+import { CSSTransition } from "react-transition-group";
+import './sellerHead.less';
+import '../../common/animated/animated.less';
+import SellerDetail from './sellerDetail';
 
 class SellerHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isGoodsDetail:false,
-      classMap: []
-    }
-  }
-
-  privilege () {
-    let seller = this.props.privilege;
-    let privilege = seller.supports.map((item,index) => {
-      return (
-        <li className="supports-item" key={index}>
-          <span className= {"icon " + this.state.classMap[seller.supports[index].type]}></span>
-          <span className="text">{seller.supports[index].description}</span>
-        </li>
-      )
-    }) 
-    return privilege;
-  }
-
-  componentDidMount () {
-    this.setState({
       classMap:['decrease', 'discount', 'special', 'invoice', 'guarantee']
-    })
+    }
+    this.showGoodsDetail = this.showGoodsDetail.bind(this);
   }
 
   showGoodsDetail () {
@@ -37,36 +21,6 @@ class SellerHead extends Component {
     }))
   }
   render() { 
-    let detail;
-    if (this.state.isGoodsDetail) {
-      detail = <div  className="detail">
-      <div className="c_warp" >
-        <div className="c_c">
-          <h1 className="name">木马打火锅</h1>
-          <div className="star-warp">
-            <Start size="48" score="4.7"/>
-          </div>
-          <div className="info">
-            <p>优惠信息</p>
-          </div>
-          <ul /* v-if="seller.supports" */ className="supports">
-            {this.privilege()}
-          </ul>
-          <div className ="info">
-            <p>商家公告</p>
-          </div>
-          <div className="s_in">
-            <p>{this.props.privilege.bulletin}</p>
-          </div>
-        </div>
-      </div>
-      <div className="detailColse" onClick={this.showGoodsDetail.bind(this)}>
-        <span className=" icon iconfont icon-cuowu" ></span>
-        </div>
-    </div>
-    } else {
-      detail ='';
-    }
     return (
       <div className="header">
         <div className="h_title">
@@ -94,12 +48,12 @@ class SellerHead extends Component {
              <span className="text">在线支付满28减5</span>
            </div>
         </div>
-        <div className="count" onClick={this.showGoodsDetail.bind(this)}>
+        <div className="count" onClick={this.showGoodsDetail}>
           <span className="sum">5个</span>
           <i className="icon iconfont icon-xiangyoujiantou"></i>
         </div>
       </div>
-      <div className="banner" onClick={this.showGoodsDetail.bind(this)}>
+      <div className="banner" onClick={this.showGoodsDetail}>
         <span className="bannerImg"></span>
         <span className="bannerText">分的司法考试放得开即可</span>
         <i className="bannerIcon iconfont icon-xiangyoujiantou"></i>
@@ -107,9 +61,14 @@ class SellerHead extends Component {
       <div className="background">
         <img src={require('../../../images/captcha.png')} alt=""/>
       </div>
-       {/* <transition  enter-active-className="animated zoomInDown" leave-active-className="animated bounceOutRight" > */}
-        {detail}
-       {/* </transition> */}
+       <CSSTransition 
+        in={this.state.isGoodsDetail}
+        classNames="fadeInTopO" 
+        timeout={500}
+        unmountOnExit
+        >
+          <SellerDetail showGoodsDetail={this.showGoodsDetail}  isActive={this.state.isGoodsDetail} privilege={this.props.privilege}/>
+        </CSSTransition>
      </div>
     );
   }

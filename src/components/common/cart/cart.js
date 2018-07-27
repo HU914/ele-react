@@ -1,34 +1,21 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {clearAllCart} from '../../../store/cart/actions';
-import Buy from '../buy/buy';
 import './cart.less';
+import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import '../../common/animated/animated.less';
+import {clearAllCart} from '../../../store/cart/actions';
+import { CSSTransition} from "react-transition-group";
+import GoodList from './goodList/goodList';
 
 class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isActive: false,
-      initY: 0,
-      scrollY: 0,
-      scroll: {
-        scrollY: 0,
-        recordY: 0,
-        listY: [],  
-        el: this.refs.goodItem,
-        cls: '.goodItem'
-      }
+      cartHieght:48,
     }
-    this.initScrollData = this.initScrollData.bind(this);
-    this.startScroll = this.startScroll.bind(this);
-    this.entScroll = this.entScroll.bind(this);
+    this.onlineScroll = this.onlineScroll.bind(this);
     this.acquireHeight = this.acquireHeight.bind(this);
-  }
-
-  componentDidMount () {
-    let scroll = this.state.scroll;
-    scroll.el = this.refs.goodItem;
-    this.setState(scroll);
+    this.clearAll = this.clearAll.bind(this);
   }
 
   onlineScroll (event) {                 //商品类型 + 商品  滚动效果 
@@ -106,43 +93,34 @@ class Cart extends Component {
   acquireHeight () {                      // 获取购物车视口高度，用于计算滚动差距
     var height = this.refs.cart.clientHeight;
     this.props.getCartHeight(height);
+    this.setState({cartHieght:height})
     return height;
   }
 
-  render() { 
-    let goodList;
+  render() {
+    let pay = false;
     let {selectFoods} = this.props;
     let totalPrice = 0;     // 总金额
-    let serverPrice = 45;  //配送费用
-    goodList = selectFoods.map((val,index) =>{
+    let serverPrice;  //配送费用
+    selectFoods.forEach((val,index) =>{
+      serverPrice = 45
       totalPrice += (val.price * val.count);
       serverPrice = (serverPrice - totalPrice);
       if ( serverPrice <= 0) {
+        pay = true;
         serverPrice = 0;
       }
-      return (
-        <li className="typeItem"  key={val.id}  onTouchStart={(event) =>this.onlineScroll(event)} onTouchMove={(event) =>this.onlineScroll(event)} onTouchEnd={(event) =>this.onlineScroll(event)}>
-          <span className="goodsName">{val.name}</span>
-          <span className="goodPrice">￥<span className="p-price">{val.price * val.count}</span></span>
-          <Buy good={val}></Buy>
-        </li>
-      )
     })
     return (
       <div className="cart" ref='cart'>
-      <div className="goodsType_wraper" style={this.state.isActive ? {display:'block'}:{display:'none'}}>
-        <div className="goodsType" ref='goodsType'>
-          <div className="g_title">
-            <span className="g_cart">购物车</span>
-            <span className="clear" onClick={this.clearAll.bind(this)}>清空</span>
-          </div>
-          <div ref="goodItem" className="goodItem">
-            <ul >
-              {goodList}
-            </ul>
-          </div>
-        </div>
-      </div>
+      <CSSTransition 
+      in={this.state.isActive}
+      classNames="fadeInBottomO" 
+      timeout={500}
+      unmountOnExit
+      >
+        <GoodList selectFoods ={selectFoods} clearAll={this.clearAll} height={this.acquireHeight}/>
+      </CSSTransition>
       <div className="c-c" onClick={this.ShowBlock.bind(this)}>
         <div className={"c-c-c " + (selectFoods.length ? 'c_c_count' : '') }>{/* :className="{c_c_count:selectFoods.length}" */}
           <span className="iconfont icon-gouwuche"></span>
@@ -160,7 +138,7 @@ class Cart extends Component {
         </div>
       </div>
       <div className="c-right">
-        <span>￥45起送 </span>
+        <span className={pay ? '.pay':''}>{pay ? '去付款' : '￥45起送'}</span>
       </div>
   </div>
     );

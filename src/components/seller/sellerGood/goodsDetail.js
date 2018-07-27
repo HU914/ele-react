@@ -197,7 +197,7 @@ class goodsDetail extends Component {
       }
     });
     return (
-      <div className="goodWrapper"  style={this.props.isActive ? {display:'block'}:{display:'none'}}>
+      <div className="goodWrapper">
         <div className="goodsDetails"  ref="goodsDetails" onTouchStart={(event) =>this.onlineScroll(event)} onTouchMove={(event) =>this.onlineScroll(event)} onTouchEnd={(event) =>this.onlineScroll(event)}>
           <div className="imgHeader">
             <img src={this.props.good.image}  alt="" />

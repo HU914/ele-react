@@ -12,10 +12,10 @@
       display: block;
       position: relative;
       text-align: center;
-      transition-property: 'font-size', 'border';
-      transition-duration:.3s;
+      transition-property: 'translateX', 'border';
+      transition-duration:.5s;
       color: rgb(77,85,93);
-      .px2Rem(font-size,28);
+      .px2Rem(translateX,28);
       &.active {
         color: #f01414;
         .fz(36);
@@ -23,7 +23,7 @@
       &.active:before{
         content:'';
         position:absolute;
-        transition: all .3s;
+        transition: all .5s;
         .bd(border-bottom,2,#f01414);
         left:0%;
         right:0%;
