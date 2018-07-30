@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 import './headTo.less';
 
 
@@ -14,13 +15,7 @@ class HeadTo extends React.Component {
   }
   
   render() {
-    let h_r;
-    if (this.props.prop.lgShow) {
-      h_r = <div className='h_r' ><span className='r_l'><NavLink exact  to='/login'>登录</NavLink></span>
-            <span className='r_r'><NavLink to='/register'>注册</NavLink></span></div>;
-    } else {
-      h_r = '';
-    }
+    console.log(this.props.site);
     return (
       <div className={this.props.prop.position ? 'headTo headToggle' : 'headTo'}>
         <div className='h_l' onClick={this.goBack}>
@@ -29,12 +24,31 @@ class HeadTo extends React.Component {
           {/* </NavLink> */}
         </div>
           <div className='h_c'>
-            <span>{this.props.name}</span>
+            {
+              this.props.prop.city ? <div className='search'>
+                <i className='iconfont icon-sousuo'></i>
+                <input type="text" className='s_inp' placeholder='搜索'/>
+              </div> : <span>{this.props.name}</span>
+            }
           </div>
-        {h_r}
+          {
+            this.props.prop.log ? <div className='h_r' >
+              <NavLink to='/city'>
+                <i className='iconfont icon-dizhi'></i>
+                <span className='site'>{this.props.site}</span>
+              </NavLink>
+            </div> : <div className='h_r' ><span className='r_l'><NavLink exact  to='/login'>登录</NavLink></span>
+            <span className='r_r'><NavLink to='/register'>注册</NavLink></span></div>
+          }
+
+
+ 
       </div>
     )
   }
 }
  
-export default HeadTo;
+export default connect(state =>({
+  site:state.site.site,
+  log:state.log.log
+}))(HeadTo)

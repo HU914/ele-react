@@ -1,0 +1,116 @@
+@import '../../Api/mixin.less';
+
+.city {
+  .cityList {
+    position: fixed;
+    width: 100vw;
+    overflow: hidden;
+    .fz(24);
+    .px2Rem(top, 80);
+    .px2Rem(bottom,0);
+    height: auto;
+    .px2Rem4(padding,0,30,0,30);
+    .c_warpper {
+      display: flex;
+      .c_left {
+        position: relative;
+        .px2Rem(width,560);
+        .current_prosition {
+          .px2Rem(margin-top,20);
+          .title{
+            .fz(30);
+            .px2Rem(margin-bottom,20);
+            .px2Rem(letter-spacing,2);
+          }
+          .c_p {
+            text-align: center;
+            .lh(60);
+            .wh(150,60);
+            .bd(border,1,#ccc);
+            .px2Rem(border-radius,8);
+            .icon-dizhi {
+              color:@ThemColor
+            }
+            .position {
+              color: #666;
+              vertical-align: top;
+              .fz(30);
+              .px2Rem2(padding, 0, 15);
+              .px2Rem(letter-spacing,4);
+            }
+          }
+        }
+        .hotCity {
+          .px2Rem(margin-top,20);
+          .title {
+            .current_prosition .title;
+          }
+          .h_c {
+            .cityItem {
+              .c_item {
+                display: inline-block;
+                .current_prosition .c_p;
+                .px2Rem(margin-right,25);
+                .px2Rem(margin-bottom,20);
+                .c_city {
+                  display: inline-block;
+                  width: 100%;
+                  height: auto;
+                  color: #666;
+                  .fz(30);
+                }
+              }
+            }
+            .c_area{
+              .cityItem;
+            }
+          }
+        }
+        .c_list {
+          .c_title {
+            .wh(50,50);
+            .lh(50);
+            .px2Rem(margin-bottom,20);
+            color: #fff;
+            text-align: center;
+            border-radius: 50%;
+            background-color:@ThemColor;
+          }
+          .cityItem {
+            .c_item {
+              display: inline-block;
+              .current_prosition .c_p;
+              .px2Rem(margin-right,25);
+              .px2Rem(margin-bottom,20);
+              .c_city {
+                color: #666;
+                .fz(30);
+              }
+            }
+          }
+          .c_area{
+            .cityItem;
+          }
+        }
+      }
+      .c_right {
+        .px2Rem(width,50);
+        .r_letter {
+          .px2Rem(margin-top,20);  
+          .c_letter {
+            color: @ThemColor;
+            .wh(32,32);
+            .lh(32);    
+            .px2Rem(margin-bottom,11);  
+            text-align: center;
+            &.l_active {
+              color: #fff;
+              border-radius: 50%;
+              background-color: @ThemColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

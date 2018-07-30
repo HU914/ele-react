@@ -40,3 +40,27 @@ export function clearAllCart () {
     type:types.CELAR_ALL_CART
   }
 }
+
+/**
+ * 事件 记录位置
+ * site：定位城市
+*/
+
+export function recordSite (site) {
+  return {
+    type:types.RECORD_ADRR,
+    site
+  }
+}
+
+/**
+ * 事件 ：保存登录状态
+ * bloo：状态
+*/
+
+export function recordLog (bloo=false) {
+  return {
+    type:types.RECORD_LOGIN,
+    bloo
+  }
+}

@@ -27,6 +27,26 @@
     text-overflow: ellipsis;
     .px2Rem(width,480);
     .px2Rem2(padding, 0, 80);
+    .search {
+      position: relative;
+      left: 0;
+      width: auto;
+      i { 
+        color: #ccc;
+        display: inline-block;
+        position: absolute;
+        .lh(40);
+        .px2Rem(left,10);
+        .px2Rem(top,22);
+      }
+      .s_inp {
+        box-sizing: border-box;
+        .lh(40);
+        .px2Rem(width,300);
+        .px2Rem(border-radius,8);
+        .px2Rem(padding-left,50);
+      }
+    }
     a{
       color: #fff;
     }
@@ -35,6 +55,12 @@
     position: absolute;
     .px2Rem(top,0);
     .px2Rem(right,10);
+    .icon-dizhi {
+      color: #11b9b2;
+    }
+    .site {
+      .px2Rem(padding-left,20);
+    }
     .r_l {
       .px2Rem(padding-right,10);
     }

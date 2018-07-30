@@ -1,8 +1,10 @@
 import { createStore,combineReducers } from "redux";//combineReducers用于组合多个reducer
 import {composeWithDevTools} from 'redux-devtools-extension'; //redux调试工具
-import {sellerCart} from './cart/reducer'; //引入cart reducer
+import {sellerCart,site,log} from './cart/reducer'; //引入cart reducer
 const shoppingCart = {
-  sellerCart
+  sellerCart,
+  site,
+  log
 }
 const rootReducer = combineReducers(shoppingCart);
 

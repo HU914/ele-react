@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {recordLog} from '../../../store/cart/actions';
 import {Link} from 'react-router-dom';
 import HeadTo from '../../common/headTo/headTo';
 import Axios from '../../../Api/Axios';
@@ -47,6 +49,7 @@ class Login extends React.Component {
   submit (event) {
     event.preventDefault();
     this.initData();
+    this.props.recordLog(true);
   }
 
   binds (parme) {
@@ -130,11 +133,10 @@ class Login extends React.Component {
  
 
 // connect 的原生用法，这里赋值的是 reducers的方法
-export default Login
+export default
 
-// connect(state => ({
-//   cart:state.buyCart
-// }), {
-//   addToCart,
-//   addTT
-// })(Login);
+connect(state => ({
+  log:state.log.log
+}), {
+  recordLog
+})(Login);

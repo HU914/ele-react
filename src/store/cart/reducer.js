@@ -47,7 +47,6 @@ const reduceToCart = (state=initialState.sellerCart,action) => {         // 删�
   return [...state,action.goods];
 }
 
-
 export const sellerCart = (state=initialState,action) => {     // 更改数据过程，reducer，
   switch(action.type) {
     case types.ADD_TO_CART: 
@@ -66,5 +65,24 @@ export const sellerCart = (state=initialState,action) => {     // 更改数据�
       }
     default:
     return state;                             // 修改状态后的返回值
+  }
+}
+
+const siteState = {
+  site:''
+}
+
+export const site = (state=siteState,action) => {
+  console.log(1);
+  return {
+    site:action.site
+  }
+}
+const logState = {
+  log:''
+}
+export const log = (state=logState,action) => {
+  return {
+    log:action.bool
   }
 }

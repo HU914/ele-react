@@ -326,6 +326,7 @@ class SellerRating extends Component {
     }
     this.transfrom = this.transfrom.bind(this)
     this.toggleContent = this.toggleContent.bind(this)
+    this.onlineScroll = this.onlineScroll.bind(this)
   }
 
   componentDidMount () {
