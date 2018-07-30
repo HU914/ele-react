@@ -23,7 +23,7 @@ class Login extends React.Component {
       let head = document.querySelector('.headTo');
       let scroll = document.body.scrollTop || document.documentElement.scrollTop;
       if (scroll > 0) {
-        head.style.zIndex =2;
+        head.style.zIndex =4;
       } else {
         head.style.zIndex = '';
       }

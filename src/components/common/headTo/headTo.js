@@ -19,9 +19,7 @@ class HeadTo extends React.Component {
     return (
       <div className={this.props.prop.position ? 'headTo headToggle' : 'headTo'}>
         <div className='h_l' onClick={this.goBack}>
-          {/* <NavLink to=''> */}
-            <i className='iconfont icon-left-circle'></i>
-          {/* </NavLink> */}
+          <i className='iconfont icon-left-circle'></i>
         </div>
           <div className='h_c'>
             {
@@ -40,9 +38,6 @@ class HeadTo extends React.Component {
             </div> : <div className='h_r' ><span className='r_l'><NavLink exact  to='/login'>登录</NavLink></span>
             <span className='r_r'><NavLink to='/register'>注册</NavLink></span></div>
           }
-
-
- 
       </div>
     )
   }
