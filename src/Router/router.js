@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route,Switch,Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router'
 import home from '../components/home/home';
 import login from '../components/login/login/login';
 import resetPass from '../components/login/resetPass/resetPass';
@@ -10,6 +11,35 @@ import '../components/common/animated/animated.less';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class MyRouter extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      self_url:true,
+    }
+  }
+
+  componentWillMount() {
+    console.log(1);
+    this.props.history.listen((location,action) => {
+      if (this.props.location.pathname === location.pathname) {
+        this.setState({
+          self_url:true
+        })
+      }
+    })
+  }
+
+  componentDidUpdate () {
+    console.log(2);
+    if (this.state.self_url) {
+      this.setState({
+        self_url:false
+      })
+    }
+  }
+
+
   render() {
     return (
       <Route children={ ({ location }) => {
@@ -17,7 +47,7 @@ class MyRouter extends React.Component {
         <TransitionGroup>
           <CSSTransition
           key={ location.key } 
-          classNames="fadeInRight" 
+          classNames={!this.state.self_url ? "fadeInRight" : ''}
           timeout={ 800 }
           >
             <main>
@@ -39,4 +69,4 @@ class MyRouter extends React.Component {
   }
 }
 
-export default MyRouter;
+export default withRouter(MyRouter);

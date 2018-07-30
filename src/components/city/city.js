@@ -138,7 +138,6 @@ class City extends Component {
   }
 
   toggleNav (index) {         // 菜单栏 点击 切换商品栏滚动高度
-    console.log(1);
     this.calculateHeight();   // 实时获取高度
     let scroll = this.state.scroll;
     let scrollFoods = scroll.menu;
@@ -156,8 +155,6 @@ class City extends Component {
       scroll.index = index;
       scroll.recordY = scroll.listH[itemIndex];
       scroll.scrollY = scroll.listH[index];
-      console.log(scroll.listH[itemIndex],scroll.listH);
-      console.log();
       scrollFoods.style.top = -scroll.listH[itemIndex] + 'px';
       scrollFoods.style.transition = 'all 0.2s';
       this.setState( preState => ({

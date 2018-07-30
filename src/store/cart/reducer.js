@@ -68,16 +68,22 @@ export const sellerCart = (state=initialState,action) => {     // 更改数据�
   }
 }
 
+/**
+ * 保存位置状态
+ */
 const siteState = {
   site:''
 }
 
 export const site = (state=siteState,action) => {
-  console.log(1);
   return {
     site:action.site
   }
 }
+
+/**
+ * 保存登录状态
+ */
 const logState = {
   log:''
 }

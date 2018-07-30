@@ -133,9 +133,7 @@ class Login extends React.Component {
  
 
 // connect 的原生用法，这里赋值的是 reducers的方法
-export default
-
-connect(state => ({
+export default connect(state => ({
   log:state.log.log
 }), {
   recordLog

@@ -15,7 +15,6 @@ class HeadTo extends React.Component {
   }
   
   render() {
-    console.log(this.props.site);
     return (
       <div className={this.props.prop.position ? 'headTo headToggle' : 'headTo'}>
         <div className='h_l' onClick={this.goBack}>
