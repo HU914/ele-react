@@ -15,7 +15,7 @@ class Login extends React.Component {
         lgShow:true,
         position:false,
         history:this.props.history
-      }
+      },
     };
   }
   componentDidUpdate() {
@@ -29,14 +29,15 @@ class Login extends React.Component {
       }
     });
   }
+  
 
   
 
   render() {
     return (
-      <div className='home' onClick={this.tt}>
+      <div className='home' onClick={this.tt} ref='home'>
       <HeadTo name='' prop={this.state.head}/>
-      <div className="h_main" >
+      <div className="h_main">
         <Route exact  path='/home' component={seller} />
         <Route path='/home/search' component={search} />
         <Route path="/home/user" component={user} />

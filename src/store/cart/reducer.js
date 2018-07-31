@@ -1,5 +1,9 @@
 import * as types from './actions-type'; //引入 action 类型 
 
+/**
+ * 购物车
+ * 
+ */
 const initialState = {                 //模拟初始状态数据，
   sellerCart: []
 }
@@ -87,8 +91,34 @@ export const site = (state=siteState,action) => {
 const logState = {
   log:''
 }
+
 export const log = (state=logState,action) => {
   return {
     log:action.bool
+  }
+}
+
+/**
+ * 收藏
+ * 
+ */
+
+const collectObj = {
+   shop: [],
+   good:[]
+ }
+
+export const collect = (state=collectObj,action) => {
+  switch(action.type) {
+    case types.ADD_COLLECTSHOP:
+      return {
+        ...state,
+        shop: [...state.shop,action.shop]
+      }
+    default:
+      return {
+        ...state,
+        shop: [...state.good,action.good]
+      } 
   }
 }

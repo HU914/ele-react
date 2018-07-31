@@ -1,0 +1,19 @@
+@import '../../Api/mixin.less';
+
+.rating {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .px2Rem(top,80);
+  .r_content {
+    .px2Rem4(padding,30,20,0,20);
+    background-color: #f4f4f4;
+    .r_list {
+      .r_item {
+        background-color: red;
+        .px2Rem2(padding,10,20);
+      }
+    }
+  }
+}

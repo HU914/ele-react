@@ -46,13 +46,14 @@
         }
         .collect {
           flex: 1;
-          text-align: right;
-          .icon-xin {
+          text-align: center;
+          .icon-jushoucanggift {
             color: rgba(7,17,27,0.2);
             .px2Rem(font-size,40);
             .px2Rem(line-height,48);
-            &.collect {
-              color: rgb(240,20,20);
+            .px2Rem(margin-bottom,20);
+            &.collectColor {
+            color: rgb(240,20,20);
             }
           }
           .collectText {
@@ -81,6 +82,9 @@
             .px2Rem(font-size,48);
             .px2Rem(line-height,48);
           }
+        } 
+        .serverDesc:last-child{
+          border: none;
         }
       }
     }

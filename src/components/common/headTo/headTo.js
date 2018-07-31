@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './headTo.less';
 
@@ -17,8 +17,13 @@ class HeadTo extends React.Component {
   render() {
     return (
       <div className={this.props.prop.position ? 'headTo headToggle' : 'headTo'}>
-        <div className='h_l' onClick={this.goBack}>
-          <i className='iconfont icon-left-circle'></i>
+        <div className='h_l'>
+          {
+            this.props.prop.go ? 
+            <Link to={this.props.prop.go}><i className='iconfont icon-left-circle'></i></Link>
+            : <i className='iconfont icon-left-circle' onClick={this.goBack}></i>
+          }
+          
         </div>
           <div className='h_c'>
             {

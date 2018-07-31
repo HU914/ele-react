@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import './user.less';
 
 class User extends React.Component {
@@ -10,17 +11,16 @@ class User extends React.Component {
         scrollY: 0,
         recordY: 0,
         listY: [],
-        userPage:'',
-        el: this.refs.user,
-        cls: '.user'
+        warpperEL: '',
+        targetEl: ''
       },    
     }
   }
 
   componentDidMount () {
     let scroll = this.state.scroll;
-    scroll.el = this.refs.user;
-    scroll.userPage = this.refs.userPage;
+    scroll.targetEl = this.refs.user;
+    scroll.warpperEL = this.refs.userPage;
     this.setState({
       scroll
     })
@@ -49,26 +49,26 @@ class User extends React.Component {
 
   startScroll (event) {
     let scroll = this.state.scroll;
-    let moveElm = this.state.scroll.el;
-    scroll.scrollY = scroll.scrollY =  Math.ceil(event.changedTouches[0].clientY - scroll.initY)
+    let moveElm = this.state.scroll.targetEl;
+    scroll.scrollY = scroll.recordY =  Math.ceil(event.changedTouches[0].clientY - scroll.initY)
     this.setState({
       scroll
     })
-    if (this.state.scroll.scrollY < 0) {
+    if (scroll.scrollY < 0) {
       moveElm.style.transition = 'none';
-      moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
+      moveElm.style.top = Math.ceil(scroll.scrollY) + 'px';
     } else {
       moveElm.style.transition = 'none';
-      moveElm.style.top = Math.ceil(this.state.scroll.scrollY) + 'px';
+      moveElm.style.top = Math.ceil(scroll.scrollY) + 'px';
     }
   }
 
   entScroll () {
     let scroll = this.state.scroll;
-    let moveElm = this.state.scroll.el;
-    if (this.state.scroll.scrollY < 0) {
-      let YY = scroll.userPage.clientHeight - moveElm.scrollHeight;
-      if (Math.abs(this.state.scroll.scrollY) >= Math.abs(YY)) {
+    let moveElm = this.state.scroll.targetEl;
+    if (scroll.scrollY < 0) {
+      let YY = scroll.warpperEL.clientHeight - moveElm.scrollHeight;
+      if (Math.abs(scroll.scrollY) >= Math.abs(YY)) {
         scroll.recordY = scroll.scrollY = YY;
         moveElm.style.top = YY + 'px';
         moveElm.style.transition = 'all 0.2s';
@@ -95,19 +95,25 @@ class User extends React.Component {
           <div className="collectBar">
             <div className="userNumber">
               <div className="u_number">
+                <NavLink to='/collect'>
                 <i className='iconfont icon-jushoucanggift'></i>
+                </NavLink>
                 <p><span>收藏</span></p>
               </div>
             </div>
             <div className="userNumber">
               <div className="u_number">
+                <NavLink to='/Rating'>
                 <i className='iconfont icon-pingjia-tianchong'></i>
+                </NavLink>
                 <p><span>评价</span></p>
               </div>
             </div>
             <div className="userNumber">
               <div className="u_number">
+                <NavLink to=''>
                 <i className='iconfont icon-zuji1'></i>
+                </NavLink>
                 <p><span>足迹</span></p>
               </div>
             </div>
@@ -117,25 +123,33 @@ class User extends React.Component {
             <div className="userServer">
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-ly_huiyuanka'></i>
+                  </NavLink>
                   <p><span>会员卡</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-youhuiquan'></i>
+                  </NavLink>
                   <p><span>优惠券</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-hongbao'></i>
+                  </NavLink>
                   <p><span>我的红包</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-huo'></i>
+                  </NavLink>
                   <p><span>会员活动</span></p>
                 </div>
               </div>
@@ -149,49 +163,65 @@ class User extends React.Component {
             <div className="userServer">
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-erweima'></i>
+                  </NavLink>
                   <p><span>我的二维码</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-kefu'></i>
+                  </NavLink>
                   <p><span>客服中心</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-yijianfankui'></i>
+                  </NavLink>
                   <p><span>发票助手</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-lianjie'></i>
+                  </NavLink>
                   <p><span>我要合作</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-lianjie'></i>
+                  </NavLink>
                   <p><span>我要合作</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-lianjie'></i>
+                  </NavLink>
                   <p><span>我要合作</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-lianjie'></i>
+                  </NavLink>
                   <p><span>我要合作</span></p>
                 </div>
               </div>
               <div className="userNumber">
                 <div className="u_number">
+                  <NavLink to=''>
                   <i className='iconfont icon-lianjie'></i>
+                  </NavLink>
                   <p><span>我要合作</span></p>
                 </div>
               </div>

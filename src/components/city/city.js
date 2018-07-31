@@ -91,7 +91,6 @@ class City extends Component {
     if (scroll.scrollY < 0) {
       let YY = scroll.cityList.clientHeight - moveElm.scrollHeight;
       if (Math.abs(scroll.scrollY) >= Math.abs(YY)) {
-        console.log(scroll.cityList.clientHeight,moveElm.scrollHeight);
         scroll.recordY = scroll.scrollY = YY;
         moveElm.style.top = YY + 'px';
         moveElm.style.transition = 'all 0.5s';

@@ -181,10 +181,6 @@ class SellerInfo extends Component {
   )} 
 
   render() {
-    let collect = '';
-    if (this.state.isCollect) {
-      collect = <span class="collectText">已收藏</span>
-    }
     return (
       <div className="seller">
         <div className="sellerContent" ref="sellerContent" onTouchStart={(event) =>this.onlineScroll(event)} onTouchMove={(event) =>this.onlineScroll(event)} onTouchEnd={(event) =>this.onlineScroll(event)}>
@@ -194,13 +190,15 @@ class SellerInfo extends Component {
                 <h1 className="sellerName">{this.state.seller.name}</h1>
                 <div className="gardeContent">
                   <Star size='36' score={this.state.seller.serviceScore}></Star>
-                  <span className="ratingCount">{this.state.ratingCount}</span>
-                  <span className="shopCount"> 月售{this.state.sellCount}单</span>
+                  <span className="ratingCount">{this.state.seller.ratingCount}</span>
+                  <span className="shopCount">月售{this.state.seller.sellCount}单</span>
                 </div>
               </article>
               <div className="collect">
-                <span className={"iconfont icon-xin " + (this.state.isCollect ? 'collect' : '')} onClick={this.collect}></span>
-                {collect}
+                <span className={"iconfont icon-jushoucanggift " + (this.state.isCollect ? 'collectColor' : '')} onClick={this.collect}></span>
+                {
+                  this.state.isCollect ? <span className="collectText">已收藏</span> : ''
+                }
               </div>
             </div>
             <div className="marketServer">

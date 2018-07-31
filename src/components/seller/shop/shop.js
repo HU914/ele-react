@@ -72,9 +72,9 @@ class Shop extends Component {
       <div className="good_warper">
         <SellerHead  privilege={this.state.seller} />
         <div className="tab">
-          <NavLink exact tag="li" to= "/shop" className="tab-item">商品</NavLink>
-          <NavLink tag="li" to= "/shop/rating" className="tab-item">评论</NavLink>
-          <NavLink tag="li" to= "/shop/seller" className="tab-item">商家</NavLink>
+          <NavLink exact  to= "/shop" className="tab-item">商品</NavLink>
+          <NavLink  to= "/shop/rating" className="tab-item">评论</NavLink>
+          <NavLink  to= "/shop/seller" className="tab-item">商家</NavLink>
         </div>
         <div className="sellerMain">
           <Switch>

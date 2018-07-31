@@ -1,6 +1,10 @@
-export const ADD_TO_CART = 'ADD_TO_CART';
-export const PRODUCT_COUNT = 'PRODUCT_COUNT';
-export const DELETE_FROM_CART = 'DELETE_FROM_CART';
-export const CELAR_ALL_CART = 'CELAR_ALL_CART';
-export const RECORD_ADRR = 'RECORD_ADRR';
-export const RECORD_LOGIN = 'RECORD_LOGIN';
+export const ADD_TO_CART = 'ADD_TO_CART';  // 添加商品
+export const PRODUCT_COUNT = 'PRODUCT_COUNT';     // 修改产品数量
+export const DELETE_FROM_CART = 'DELETE_FROM_CART'; // 删除商品
+export const CELAR_ALL_CART = 'CELAR_ALL_CART';   // 清空购物车
+export const RECORD_ADRR = 'RECORD_ADRR';     // 记录地址
+export const RECORD_LOGIN = 'RECORD_LOGIN';   //  记录登录状态
+export const ADD_COLLECTSHOP = 'ADD_COLLECTSHOP';  // 添加收藏 店铺
+export const ADD_COLLECTGOOD = 'ADD_COLLECTGOOD';  // 添加收藏 商品
+export const DELETE_COLLECTSHOP = 'DELETE_COLLECTSHOP';  // 删除收藏 店铺
+export const DELETE_COLLECTGOOD = 'DELETE_COLLECTGOOD';  // 删除收藏 商品

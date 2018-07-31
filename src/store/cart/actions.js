@@ -64,3 +64,25 @@ export function recordLog (bloo=false) {
     bloo
   }
 }
+
+/**
+ * 事件：收藏店铺 
+ * @param {*} shop  店铺
+ */
+export function collectShop (shop) {
+  return {
+    type:types.ADD_COLLECTSHOP,
+    shop
+  }
+} 
+
+/**
+ * 事件：收藏商品 
+ * @param {*} good  商品
+ */
+export function collectGood (good) {
+  return {
+    type:types.ADD_COLLECTGOOD,
+    good
+  }
+}
