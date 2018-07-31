@@ -16,8 +16,8 @@ class Rating extends Component {
   }
   render() { 
     return (  
-      <div className="rating">
-        <HeadTo name='' prop={this.state.head} />
+      <div className="ratingPage">
+        <HeadTo name='评价' prop={this.state.head} />
         <div className="r_content">
           <ul className='r_list'>
             <li className='r_item'>

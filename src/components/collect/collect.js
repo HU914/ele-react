@@ -20,7 +20,7 @@ class Collect extends Component {
   render() { 
     return (
       <div className="collect">
-        <HeadTo name='' prop={this.state.head} />
+        <HeadTo name='收藏' prop={this.state.head} />
         <div className="c_nav">
           <span className='n_bar'>
             <NavLink exact to='/collect'>店铺</NavLink>
@@ -31,7 +31,7 @@ class Collect extends Component {
         </div>
           <Switch>
             <Route exact path='/collect' component={Shop} />
-            <Route path='/collect' component={Good} />
+            <Route path='/collect/good' component={Good} />
           </Switch>
       </div>
     );
