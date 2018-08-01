@@ -137,8 +137,8 @@ class Cart extends Component {
           <span className="c-i-info">另需配送费￥{serverPrice}元</span>
         </div>
       </div>
-      <div className="c-right">
-        <span className={pay ? '.pay':''}>{pay ? '去付款' : '￥45起送'}</span>
+      <div className= {"c-right " + (pay ? 'payment':'')}>
+        <span>{pay ? '去付款' : '￥45起送'}</span>
       </div>
   </div>
     );
