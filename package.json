@@ -2,6 +2,7 @@
   "name": "ele-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "animated": "^0.2.2",
     "autoprefixer": "7.1.6",

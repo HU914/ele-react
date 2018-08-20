@@ -46,7 +46,7 @@ export function clearAllCart () {
  * site：定位城市
 */
 
-export function recordSite (site) {
+export function recordSite (site = 1) {
   return {
     type:types.RECORD_ADRR,
     site
@@ -58,10 +58,10 @@ export function recordSite (site) {
  * bloo：状态
 */
 
-export function recordLog (bloo=false) {
+export function recordLog (bool=false) {
   return {
     type:types.RECORD_LOGIN,
-    bloo
+    bool
   }
 }
 

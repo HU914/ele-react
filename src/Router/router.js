@@ -1,15 +1,15 @@
 import React from 'react';
 import {Route,Switch,Redirect} from 'react-router-dom';
 import {withRouter} from 'react-router'
-import home from '../components/home/home';
-import login from '../components/login/login/login';
-import resetPass from '../components/login/resetPass/resetPass';
-import register from '../components/login/register/register';
-import shop from '../components/seller/shop/shop';
-import city from '../components/city/city';
-import collect from '../components/collect/collect';
-import Rating from '../components/rating/rating';
-import '../components/common/animated/animated.less';
+import home from '../pages/home/home';
+import login from '../pages/login/login/login';
+import resetPass from '../pages/login/resetPass/resetPass';
+import register from '../pages/login/register/register';
+import shop from '../pages/seller/shop/shop';
+import city from '../pages/city/city';
+import collect from '../pages/collect/collect';
+import Rating from '../pages/rating/rating';
+import '../components/animated/animated.less';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class MyRouter extends React.Component {

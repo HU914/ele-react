@@ -80,9 +80,14 @@ const siteState = {
 }
 
 export const site = (state=siteState,action) => {
-  return {
-    site:action.site
-  }
+  switch(action.type) {
+    case types.RECORD_ADRR:
+      return {
+        site:action.site
+      }
+    default:
+      return state  
+  } 
 }
 
 /**
@@ -93,8 +98,13 @@ const logState = {
 }
 
 export const log = (state=logState,action) => {
-  return {
-    log:action.bool
+  switch(action.type) {
+    case types.RECORD_LOGIN:
+      return {
+        log:action.bool
+      }
+    default:
+      return state  
   }
 }
 
