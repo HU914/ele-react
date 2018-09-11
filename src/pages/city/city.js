@@ -24,7 +24,7 @@ import './city.less';
 //   )
 // }
 
-function CityList (props) {
+const CityList = (props) => {
   return (
     Object.keys(cityData).map((key,index) => {
       let elm = '';
@@ -42,7 +42,7 @@ function CityList (props) {
     })
   )
 }
-function CityItem (props) {
+const CityItem = (props) => {
   return (
     Object.keys(props.data).map((key,index) => {
       return(
@@ -54,7 +54,7 @@ function CityItem (props) {
   )
 }
 
-function NavTitle (props) {
+const NavTitle = (props) => {
   return (
     Object.keys(cityData).map((key,index) => {
       return (
@@ -161,7 +161,6 @@ class City extends Component {
         moveElm.style.transition = 'all 0.5s';
       }
     } else {
-      console.log(1);
       if (moveElm.getBoundingClientRect().top > 0) {
         moveElm.style.top = scroll.recordY = 0;
         moveElm.style.transition = 'all 0.5s';
@@ -232,8 +231,7 @@ class City extends Component {
   render() { 
     return (
       <div className="city">
-        <HeadTo name='选择城市' prop={this.state.head} />
-        
+        <HeadTo name='选择城市' prop={this.state.head} />      
         <div className="cityList" ref='cityList'>
           <div className="c_warpper">
             <div className="c_left" ref="c_left" onTouchStart={(event) =>this.onlineScroll(event)} onTouchMove={(event) =>this.onlineScroll(event)} onTouchEnd={(event) =>this.onlineScroll(event)}>

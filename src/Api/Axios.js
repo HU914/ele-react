@@ -1,4 +1,5 @@
 import Server from './server';
+import '../mockJs/mock';
 
 class AXIOS extends Server {
   /** 
@@ -71,7 +72,52 @@ class AXIOS extends Server {
       throw(err);
     }
   }
+  /**
+   * 
+  */
+  async getTest (params={}) {
+    try {
+      let result = await this.axios('get',' http://106.12.22.19');
+      if (result) {
+        return result;
+      } 
+      else {
+        let err = {
+          tip: '位置接收失败',
+          Response: result,
+          data: params,
+          url: 'http',
+        }
+        throw err;
+      }
+    } 
+    catch (err){
+      throw(err);
+    }
+  }
+
+  async getSellerMesaage (params={}) {
+    try {
+      let result = await this.axios('get',' http://106.12.22.19');
+      if (result) {
+        return result;
+      } 
+      else {
+        let err = {
+          tip: '位置接收失败',
+          Response: result,
+          data: params,
+          url: 'http',
+        }
+        throw err;
+      }
+    } 
+    catch (err){
+      throw(err);
+    }
+  }
 }
+
 
 
 

@@ -1,24 +1,28 @@
 import React from 'react';
-import './home.less';
 import {Route} from 'react-router-dom';
 import HeadTo from '../../components/headTo/headTo';
 import Footer from '../../components/footer/footer';
 import search from '../search/search';
 import seller from '../seller/seller';
 import user from '../user/user';
+import Shade from '../../components/shade/shade';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      head:{
-        lgShow:true,
-        position:false,
-        history:this.props.history
+      shade: true,
+      head: {
+        lgShow: true,
+        position: false,
+        history: this.props.history
       },
     };
   }
-  componentDidUpdate() {
+  componentDidMount () {
+    this.setState({shade: false});  
+  }
+  componentDidUpdate () {
     window.addEventListener('scroll',() => {
       let head = document.querySelector('.headTo');
       let scroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -36,13 +40,12 @@ class Login extends React.Component {
   render() {
     return (
       <div className='home' onClick={this.tt} ref='home'>
-      <HeadTo name='' prop={this.state.head}/>
-      <div className="h_main">
-        <Route exact  path='/home' component={seller} />
-        <Route path='/home/search' component={search} />
-        <Route path="/home/user" component={user} />
-      </div>
-      <Footer/>
+        <HeadTo name='' prop={this.state.head}/>
+          <Route exact  path='/home' component={seller} />
+          <Route path='/home/search' component={search} />
+          <Route path="/home/user" component={user} />
+        <Footer/>
+        {this.state.shade ? <Shade/> : ''}
       </div>
     )
   }
