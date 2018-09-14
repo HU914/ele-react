@@ -1,7 +1,7 @@
 {
   "name": "ele-react",
   "version": "0.1.0",
-  "homepage" : "http://hu914.github.io/ele-react",
+  "homepage" : "https://hu914.github.io/ele-react/build/",
   "private": true,
   "dependencies": {
     "animated": "^0.2.2",
