@@ -1,6 +1,8 @@
-export function createdMap(AMap) {
 
-    const map = new AMap.Map('container', {
+
+export function Map(AMap){
+  return new Promise((resolve,rejects) => {
+    var map = new AMap.Map('container', {
       resizeEnable: true
     })
     map.plugin('AMap.Geolocation', function() {
@@ -24,10 +26,13 @@ export function createdMap(AMap) {
     })
     function onComplete (data) {
       // data是具体的定位信息
-      console.log(data);  
+      resolve(data);
     }
+  
     function onError (data) {
       // 定位出错
-      console.log(data); 
+      rejects(data);
     }
+
+  })
 }

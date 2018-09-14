@@ -3,8 +3,8 @@ import {NavLink,Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {recordSite} from '../../store/cart/actions';
 import './headTo.less';
-import Axios from '../../Api/Axios';
-import {createdMap} from '../map/map';
+// import Axios from '../../Api/Axios';
+import {Map} from '../map/map';
 
 
 
@@ -19,13 +19,11 @@ class HeadTo extends React.Component {
   }
 
   componentDidMount() {
-    // this.getSitie();
     if (!this.props.site) {    
       fetch('https://restapi.amap.com/v3/ip?key=c046c759166dd4603eb59c5091d98e52').then((res)=>{
         if(res.ok){
           res.text().then((data)=>{
             const detail=JSON.parse(data)
-            console.log(createdMap(window.AMap));
             this.props.recordSite(detail.city)
           })
         }
@@ -33,18 +31,17 @@ class HeadTo extends React.Component {
         console.log(res.status);
       })
     }
+    this.site();
   }
-  
-  getSitie = async () => {
+
+  site = async () => {
     try {
-      let result = await Axios.getSite();
+      let result = await Map(window.AMap);
       console.log(result);
-    }
-    catch(err) {
+    } catch(err) {
       console.log(err);
     }
   }
-
   goBack() {
     this.props.prop.history.goBack();
   }
